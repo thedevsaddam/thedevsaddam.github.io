@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coffee time</title>
+    <link>https://thedevsaddam.github.io/</link>
+    <description>Recent content on Coffee time</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2017 by Saddam H</copyright>
+    <lastBuildDate>Wed, 15 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thedevsaddam.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Links</title>
+      <link>https://thedevsaddam.github.io/links/</link>
+      <pubDate>Wed, 15 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/links/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://thedevsaddam.github.io/about/</link>
+      <pubDate>Wed, 15 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/about/</guid>
+      <description>Software engineer at Pathao Inc, love technology, love to spend time with learning new thing
+ Love to drink coffee, watching movies. Dream to do something for the world. In free time go to Cineplex and watch movies.. Recently in holidays I used to watch movies all the night at home. Trying to enjoy the life as it is.
+I am familiar with programming from 2009. At that time I started programming in QBASIC and C language.</description>
+    </item>
+    
+    <item>
+      <title>Build RESTful API service in golang using gin-gonic framework</title>
+      <link>https://thedevsaddam.github.io/post/build-restful-api-service-in-go/</link>
+      <pubDate>Sun, 12 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/post/build-restful-api-service-in-go/</guid>
+      <description>Build RESTful API service in golang using gin-gonic framework Today I’m going to build a simple API for todo application with the golang programming language. I’m going to use golang simplest/fastest framework gin-gonic and a beautiful ORM gorm for our database work. To install these packages go to your workspace $GOPATH/src and run these command below:
+$ go get gopkg.in/gin-gonic/gin.v1 $ go get -u github.com/jinzhu/gorm $ go get github.com/go-sql-driver/mysql In generic crud application we need the API’s as follows:</description>
+    </item>
+    
+    <item>
+      <title>Code for coffee time</title>
+      <link>https://thedevsaddam.github.io/post/coffee-time/</link>
+      <pubDate>Sat, 11 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/post/coffee-time/</guid>
+      <description>What to read in your favorite coffee time? Don&amp;rsquo;t worry, I&amp;rsquo;ll try to make your coffee time more interesting. Hope that will worth your time :)
+As yo already know I am a new born gopher, I love this language so much, thats the reason I&amp;rsquo;ll try to write in my free time. I am interested to write not only Go but also some other cool tech staff</description>
+    </item>
+    
+  </channel>
+</rss>

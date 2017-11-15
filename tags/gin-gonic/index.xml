@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gin Gonic on Coffee time</title>
+    <link>https://thedevsaddam.github.io/tags/gin-gonic/</link>
+    <description>Recent content in Gin Gonic on Coffee time</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2017 by Saddam H</copyright>
+    <lastBuildDate>Sun, 12 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thedevsaddam.github.io/tags/gin-gonic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Build RESTful API service in golang using gin-gonic framework</title>
+      <link>https://thedevsaddam.github.io/post/build-restful-api-service-in-go/</link>
+      <pubDate>Sun, 12 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/post/build-restful-api-service-in-go/</guid>
+      <description>Build RESTful API service in golang using gin-gonic framework Today I’m going to build a simple API for todo application with the golang programming language. I’m going to use golang simplest/fastest framework gin-gonic and a beautiful ORM gorm for our database work. To install these packages go to your workspace $GOPATH/src and run these command below:
+$ go get gopkg.in/gin-gonic/gin.v1 $ go get -u github.com/jinzhu/gorm $ go get github.com/go-sql-driver/mysql In generic crud application we need the API’s as follows:</description>
+    </item>
+    
+  </channel>
+</rss>

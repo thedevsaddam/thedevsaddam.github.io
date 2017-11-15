@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Build RESTful API service in golang using gin-gonic framework</title>
+
+  
+  
+
+
+
+
+  
+  <meta name="author" content="Saddam H" />
+  <meta name="description" content="Build RESTful API service in golang using gin-gonic framework Today I’m going to build a simple API for todo application with the golang programming language. I’m going to use golang simplest/fastest framework gin-gonic and a beautiful ORM gorm for our database work. To install these packages go to your workspace $GOPATH/src and run these command below:
+$ go get gopkg.in/gin-gonic/gin.v1 $ go get -u github.com/jinzhu/gorm $ go get github.com/go-sql-driver/mysql In generic crud application we need the API’s as follows:" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@thedevsaddam" />
+    <meta name="twitter:title" content="Build RESTful API service in golang using gin-gonic framework" />
+    <meta name="twitter:description" content="Build RESTful API service in golang using gin-gonic framework Today I’m going to build a simple API for todo application with the golang programming language. I’m going to use golang simplest/fastest framework gin-gonic and a beautiful ORM gorm for our database work. To install these packages go to your workspace $GOPATH/src and run these command below:
+$ go get gopkg.in/gin-gonic/gin.v1 $ go get -u github.com/jinzhu/gorm $ go get github.com/go-sql-driver/mysql In generic crud application we need the API’s as follows:" />
+    <meta name="twitter:image" content="https://thedevsaddam.github.io/img/avatar.jpg" />
+  
+
+
+
+
+<meta name="generator" content="Hugo 0.31-DEV" />
+
+
+<link rel="canonical" href="https://thedevsaddam.github.io/post/build-restful-api-service-in-go/" />
+<link rel="alternative" href="https://thedevsaddam.github.io/index.xml" title="Coffee time" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="tz-hi3YdV_-s4rWQsQr1-YeYBoJL-ZNMIr6Kx4d-rVo" />
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Coffee time" />
+<meta name="msapplication-tooltip" content="Coffee time" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://thedevsaddam.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://thedevsaddam.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://thedevsaddam.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://thedevsaddam.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://thedevsaddam.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://thedevsaddam.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://thedevsaddam.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://thedevsaddam.github.io/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">Coffee time</h2>
+  
+  <p class="subtitle">~ Make your coffee time worth ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item  is-active"><a href="https://thedevsaddam.github.io/">Home</a></li>
+      
+        <li class="menu-item "><a href="https://thedevsaddam.github.io/links/">Links</a></li>
+      
+        <li class="menu-item "><a href="https://thedevsaddam.github.io/about/">About</a></li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:thedevsaddam@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/thedevsaddam" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/thedevsaddam" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/thedevsaddam" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      <li class="social-item">
+        <a href="//www.instagram.com/thedevsaddam" title="Instagram"><span class="icon icon-instagram"></span></a>
+      </li>
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//medium.com/@thedevsaddam" title="Medium"><span class="icon icon-medium"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.quora.com/profile/thedevsaddam" title="Quora"><span class="icon icon-quora"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/thedevsaddam" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://thedevsaddam.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Build RESTful API service in golang using gin-gonic framework</h1>
+      <p class="post-meta">@Saddam H · Nov 12, 2017 · 5 min read</p>
+    </header>
+    <article class="post-content">
+
+<h3 id="build-restful-api-service-in-golang-using-gin-gonic-framework">Build RESTful API service in golang using gin-gonic framework</h3>
+
+<p>Today I’m going to build a simple API for todo application with the golang programming language. I’m going to use golang simplest/fastest framework gin-gonic and a beautiful ORM gorm for our database work. To install these packages go to your workspace <code>$GOPATH/src</code> and run these command below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ go get gopkg.in/gin-gonic/gin.v1
+$ go get -u github.com/jinzhu/gorm
+$ go get github.com/go-sql-driver/mysql</code></pre></div>
+<p>In generic crud application we need the API’s as follows:</p>
+
+<ul>
+<li>POST todos/</li>
+<li>GET todos/</li>
+<li>GET todos/{id}</li>
+<li>PUT todos/{id}</li>
+<li>DELETE todos/{id}</li>
+</ul>
+
+<p>Let’s start coding, go to your <code>$GOPATH/src</code> and make a directory todo. Inside the todo directory create a file main.go. Import the “gin framework” to our project and create the routes like below inside main function. I like to add a prefix of the apis like <code>“api/v1/”</code>, that’s why we’ll use the router Group method</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+       <span class="s">&#34;github.com/gin-gonic/gin&#34;</span>
+<span class="p">)</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">router</span> <span class="o">:=</span> <span class="nx">gin</span><span class="p">.</span><span class="nx">Default</span><span class="p">()</span>
+<span class="nx">v1</span> <span class="o">:=</span> <span class="nx">router</span><span class="p">.</span><span class="nx">Group</span><span class="p">(</span><span class="s">&#34;/api/v1/todos&#34;</span><span class="p">)</span>
+ <span class="p">{</span>
+  <span class="nx">v1</span><span class="p">.</span><span class="nx">POST</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nx">createTodo</span><span class="p">)</span>
+  <span class="nx">v1</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="nx">fetchAllTodo</span><span class="p">)</span>
+  <span class="nx">v1</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">&#34;/:id&#34;</span><span class="p">,</span> <span class="nx">fetchSingleTodo</span><span class="p">)</span>
+  <span class="nx">v1</span><span class="p">.</span><span class="nx">PUT</span><span class="p">(</span><span class="s">&#34;/:id&#34;</span><span class="p">,</span> <span class="nx">updateTodo</span><span class="p">)</span>
+  <span class="nx">v1</span><span class="p">.</span><span class="nx">DELETE</span><span class="p">(</span><span class="s">&#34;/:id&#34;</span><span class="p">,</span> <span class="nx">deleteTodo</span><span class="p">)</span>
+ <span class="p">}</span>
+ <span class="nx">router</span><span class="p">.</span><span class="nx">Run</span><span class="p">()</span>
+<span class="p">}</span></code></pre></div>
+<p>We have created five routes and they handle some functions like <code>createTodo</code>, <code>fetchAllTodo</code> etc. We’ll discuss about them soon.
+Now we need to setup a database connection. To use database pull the gorm package and mysql dialects in our code. Follow the code below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+       <span class="s">&#34;github.com/gin-gonic/gin&#34;</span>
+       <span class="s">&#34;github.com/jinzhu/gorm&#34;</span>
+       <span class="nx">_</span> <span class="s">&#34;github.com/jinzhu/gorm/dialects/mysql&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">db</span> <span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span>
+<span class="kd">func</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+ <span class="c1">//open a db connection
+</span><span class="c1"></span> <span class="kd">var</span> <span class="nx">err</span> <span class="kt">error</span>
+ <span class="nx">db</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">gorm</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&#34;mysql&#34;</span><span class="p">,</span> <span class="s">&#34;root:12345@/demo?charset=utf8&amp;parseTime=True&amp;loc=Local&#34;</span><span class="p">)</span>
+ <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+  <span class="nb">panic</span><span class="p">(</span><span class="s">&#34;failed to connect database&#34;</span><span class="p">)</span>
+ <span class="p">}</span>
+<span class="c1">//Migrate the schema
+</span><span class="c1"></span> <span class="nx">db</span><span class="p">.</span><span class="nx">AutoMigrate</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">todoModel</span><span class="p">{})</span>
+<span class="p">}</span></code></pre></div>
+<p>In the above code “mysql” is our database driver, “root” is database username, “12345” password and “demo” is database name. Please change these information as your needs.
+We’ll use the Database function to get the database connection. Lets make a <code>todoModel</code> and <code>transformedTodo</code> struct. The first struct will represent the original Todo and the second one will hold the transformed todo for response to the api. Here we transformed the todo response because we don’t expose some database fields (updated_at, created_at) to the consumer.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="p">(</span>
+ <span class="c1">// todoModel describes a todoModel type
+</span><span class="c1"></span> <span class="nx">todoModel</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">gorm</span><span class="p">.</span><span class="nx">Model</span>
+  <span class="nx">Title</span>     <span class="kt">string</span> <span class="s">`json:&#34;title&#34;`</span>
+  <span class="nx">Completed</span> <span class="kt">int</span>    <span class="s">`json:&#34;completed&#34;`</span>
+ <span class="p">}</span>
+<span class="c1">// transformedTodo represents a formatted todo
+</span><span class="c1"></span> <span class="nx">transformedTodo</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">ID</span>        <span class="kt">uint</span>   <span class="s">`json:&#34;id&#34;`</span>
+  <span class="nx">Title</span>     <span class="kt">string</span> <span class="s">`json:&#34;title&#34;`</span>
+  <span class="nx">Completed</span> <span class="kt">bool</span>   <span class="s">`json:&#34;completed&#34;`</span>
+ <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+<p>Todo struct has one field extra <code>gorm.Model</code> what does it mean? well, this field will embed a Model struct for us which contains four fields “ID, CreatedAt, UpdatedAt, DeletedAt”</p>
+
+<p>Gorm has migration facilities, we already used it in <code>init</code> function. When we run the application first it’ll create a connection and then the migration.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//Migrate the schema
+</span><span class="c1"></span> <span class="nx">db</span><span class="p">.</span><span class="nx">AutoMigrate</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">todoModel</span><span class="p">{})</span></code></pre></div>
+<p>Can you remember the five routes we wrote a minute earlier? Lets implement the five methods one by one.
+When a user send a POST request to the path ‘api/v1/todos/’ with ‘title and completed’ field it’ll be handled by this <code>route v1.POST(“/”, createTodo)</code></p>
+
+<p>Lets Implement the createTodo function</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// createTodo add a new todo
+</span><span class="c1"></span><span class="kd">func</span> <span class="nx">createTodo</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nx">completed</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">PostForm</span><span class="p">(</span><span class="s">&#34;completed&#34;</span><span class="p">))</span>
+ <span class="nx">todo</span> <span class="o">:=</span> <span class="nx">todoModel</span><span class="p">{</span><span class="nx">Title</span><span class="p">:</span> <span class="nx">c</span><span class="p">.</span><span class="nx">PostForm</span><span class="p">(</span><span class="s">&#34;title&#34;</span><span class="p">),</span> <span class="nx">Completed</span><span class="p">:</span> <span class="nx">completed</span><span class="p">}</span>
+ <span class="nx">db</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">todo</span><span class="p">)</span>
+ <span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusCreated</span><span class="p">,</span> <span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&#34;status&#34;</span><span class="p">:</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusCreated</span><span class="p">,</span> <span class="s">&#34;message&#34;</span><span class="p">:</span> <span class="s">&#34;Todo item created successfully!&#34;</span><span class="p">,</span> <span class="s">&#34;resourceId&#34;</span><span class="p">:</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">ID</span><span class="p">})</span>
+<span class="p">}</span></code></pre></div>
+<p>In the above code we use gin Context to receive the posted data and gorm database connection to save the todo. After saving the resource we send the <code>resource id</code> with a good &amp; meaningful response to the user.</p>
+
+<p>Lets implement the rest of the functions</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// fetchAllTodo fetch all todos
+</span><span class="c1"></span><span class="kd">func</span> <span class="nx">fetchAllTodo</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+ <span class="kd">var</span> <span class="nx">todos</span> <span class="p">[]</span><span class="nx">todoModel</span>
+ <span class="kd">var</span> <span class="nx">_todos</span> <span class="p">[]</span><span class="nx">transformedTodo</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">todos</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">todos</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+  <span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span> <span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&#34;status&#34;</span><span class="p">:</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span> <span class="s">&#34;message&#34;</span><span class="p">:</span> <span class="s">&#34;No todo found!&#34;</span><span class="p">})</span>
+  <span class="k">return</span>
+ <span class="p">}</span>
+<span class="c1">//transforms the todos for building a good response
+</span><span class="c1"></span> <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">item</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">todos</span> <span class="p">{</span>
+  <span class="nx">completed</span> <span class="o">:=</span> <span class="kc">false</span>
+  <span class="k">if</span> <span class="nx">item</span><span class="p">.</span><span class="nx">Completed</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+   <span class="nx">completed</span> <span class="p">=</span> <span class="kc">true</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+   <span class="nx">completed</span> <span class="p">=</span> <span class="kc">false</span>
+  <span class="p">}</span>
+  <span class="nx">_todos</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">_todos</span><span class="p">,</span> <span class="nx">transformedTodo</span><span class="p">{</span><span class="nx">ID</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span> <span class="nx">Title</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">Title</span><span class="p">,</span> <span class="nx">Completed</span><span class="p">:</span> <span class="nx">completed</span><span class="p">})</span>
+ <span class="p">}</span>
+ <span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&#34;status&#34;</span><span class="p">:</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s">&#34;data&#34;</span><span class="p">:</span> <span class="nx">_todos</span><span class="p">})</span>
+<span class="p">}</span>
+<span class="c1">// fetchSingleTodo fetch a single todo
+</span><span class="c1"></span><span class="kd">func</span> <span class="nx">fetchSingleTodo</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+ <span class="kd">var</span> <span class="nx">todo</span> <span class="nx">todoModel</span>
+ <span class="nx">todoID</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Param</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">todo</span><span class="p">,</span> <span class="nx">todoID</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">ID</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+  <span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span> <span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&#34;status&#34;</span><span class="p">:</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span> <span class="s">&#34;message&#34;</span><span class="p">:</span> <span class="s">&#34;No todo found!&#34;</span><span class="p">})</span>
+  <span class="k">return</span>
+ <span class="p">}</span>
+<span class="nx">completed</span> <span class="o">:=</span> <span class="kc">false</span>
+ <span class="k">if</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">Completed</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+  <span class="nx">completed</span> <span class="p">=</span> <span class="kc">true</span>
+ <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">completed</span> <span class="p">=</span> <span class="kc">false</span>
+ <span class="p">}</span>
+<span class="nx">_todo</span> <span class="o">:=</span> <span class="nx">transformedTodo</span><span class="p">{</span><span class="nx">ID</span><span class="p">:</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span> <span class="nx">Title</span><span class="p">:</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">Title</span><span class="p">,</span> <span class="nx">Completed</span><span class="p">:</span> <span class="nx">completed</span><span class="p">}</span>
+ <span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&#34;status&#34;</span><span class="p">:</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s">&#34;data&#34;</span><span class="p">:</span> <span class="nx">_todo</span><span class="p">})</span>
+<span class="p">}</span>
+<span class="c1">// updateTodo update a todo
+</span><span class="c1"></span><span class="kd">func</span> <span class="nx">updateTodo</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+ <span class="kd">var</span> <span class="nx">todo</span> <span class="nx">todoModel</span>
+ <span class="nx">todoID</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Param</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">todo</span><span class="p">,</span> <span class="nx">todoID</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">ID</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+  <span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span> <span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&#34;status&#34;</span><span class="p">:</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span> <span class="s">&#34;message&#34;</span><span class="p">:</span> <span class="s">&#34;No todo found!&#34;</span><span class="p">})</span>
+  <span class="k">return</span>
+ <span class="p">}</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">todo</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&#34;title&#34;</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">PostForm</span><span class="p">(</span><span class="s">&#34;title&#34;</span><span class="p">))</span>
+ <span class="nx">completed</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">PostForm</span><span class="p">(</span><span class="s">&#34;completed&#34;</span><span class="p">))</span>
+ <span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">todo</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&#34;completed&#34;</span><span class="p">,</span> <span class="nx">completed</span><span class="p">)</span>
+ <span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&#34;status&#34;</span><span class="p">:</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s">&#34;message&#34;</span><span class="p">:</span> <span class="s">&#34;Todo updated successfully!&#34;</span><span class="p">})</span>
+<span class="p">}</span>
+<span class="c1">// deleteTodo remove a todo
+</span><span class="c1"></span><span class="kd">func</span> <span class="nx">deleteTodo</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+ <span class="kd">var</span> <span class="nx">todo</span> <span class="nx">todoModel</span>
+ <span class="nx">todoID</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Param</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">todo</span><span class="p">,</span> <span class="nx">todoID</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">ID</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+  <span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span> <span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&#34;status&#34;</span><span class="p">:</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span> <span class="s">&#34;message&#34;</span><span class="p">:</span> <span class="s">&#34;No todo found!&#34;</span><span class="p">})</span>
+  <span class="k">return</span>
+ <span class="p">}</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">todo</span><span class="p">)</span>
+ <span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&#34;status&#34;</span><span class="p">:</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s">&#34;message&#34;</span><span class="p">:</span> <span class="s">&#34;Todo deleted successfully!&#34;</span><span class="p">})</span>
+<span class="p">}</span></code></pre></div>
+<p>In the <code>fetchAllTodo</code> function we fetched all the todos and and build a transformed response with id, title, completed . We removed the CreatedAt, UpdatedAt, DeletedAt fields and cast the integer value to bool.</p>
+
+<p>Well, we write enough code, let try to build the app and test it, I’m going test it using chrome extension Postman (you can use any REST client like curl to test).</p>
+
+<p>To build the app open your terminal and go the the project directory</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ go build main.go</code></pre></div>
+<p>The command will build a binary file main and to run the file us this command <code>$ ./main</code> . Wow, our simple todo app is running on port: 8080. It’ll display the debug log, because by default gin run’s in debug mode and port 8080.</p>
+
+<h5 id="need-full-source-code">Need full source code?</h5>
+
+<script src="//gist.github.com/thedevsaddam/a863148ff9de4cd3fcc628191005ab2e.js"></script>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://thedevsaddam.github.io/tags/go"><span class="tag">Go</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/golang"><span class="tag">Golang</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/rest-api"><span class="tag">Rest Api</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/gin-gonic"><span class="tag">Gin-Gonic</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/framework"><span class="tag">Framework</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        Copyright © 2017 by Saddam H
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thedevsaddam" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017 Coffee time</p>
+  
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://thedevsaddam.github.io/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-109646237-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>
