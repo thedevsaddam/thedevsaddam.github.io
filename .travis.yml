@@ -1,0 +1,20 @@
+env:
+  global:
+  - secure: pvH7KvdbPIygyiIYZD0LDP5Ii1lXvugS4f1sP2rYr/0OrORHdF8qdMMlvgiU8jNDcTNs4Crq6wGNDUkiYP03CgMg7zqMkN7Of7pjyKtP4/HiS4b7JMIgcWQ/fBW1xtvCFv+O6nkSvYCHEtPSe/m++x6soOCiJcXQFC2wV7jdy8evw5mKJX7gE98vUHyjqnAzF+1nMtIZDOLp+gQALpyjb16oE8WgGRV8ngdJuMXL/NFkk7DRnu60FGac0wLYlcYug+dE8yyczlwT+9mIx+4M3fBbin5fmcJLU7Tm9txxWXrap/P7Ijadap9bsvbho8pvR1SQKqC4G2q6yJ3M/uGjDMIWwwdDsIEWpeT6SdTETlEwSpYN5zxTXflwLtoBjBMydWeMgQU9fNgWMEace5krz71O964W0lf4EUlYwqcWCwY8V7NepVbrX7A7OOD00b4hvoNQCOBZ49tOsxnJrNWYRGgifXM7juomVbtbVMt29HoWRL6ys/JmMczKqq7Sc4Kg8j7ZU6xnHy4URwf1zKYYy/xlgSgEddWYFSve08o+QW9lbiQxbKae9p2ps3eiQJqR9EY7O0IurhuvS2IX2oE55LVmdu1rLvC2BHZOa4fggxS1xNrAkkSkpgopPyTR8of9c60q3qtcuMP3EJzul2x0y8OXddpPsld1dXJ92OhaWg8=
+  - GIT_DEPLOY_DIR=public
+  - GIT_DEPLOY_BRANCH=master
+  - GIT_DEPLOY_USERNAME="Saddam H"
+  - GIT_DEPLOY_EMAIL=thedevsaddam@gmail.com
+  - secure: l/zRat3Dvu0TSjRDsc50kdsySLq0lsU1EQu7iaDRtOPcrN6uIk4L3/3r8XVuKzufePvi/d5Ioj0xPt5n7dKsK6SmjSikNGji7ZY4yafsRutEYOiExuzFSCeLiI/NNsfo/6z3MWJ3eqLzC5qpTG87rtHhshktpLRC/YPPhfsPx8uerhFFMNxLoLidXWb0F1CJ53Lwtk9fgPMaBFWLCzxl+rLu/+pfMfGJ5msJ4TI4w4sXBeXy1cFwrdn3Cf1gmkh4Sxp3lgSEtMUbtmzT+/ow7DqLkkd3UnMoctOeBIZv6Q5XlpEzSHBGwlYkBZRKmwCSYVOJHmK8MQbggkHbuCkJ0VDetPBl6vIPQrFjmaUo7BP/XkwZBGuXCYKdNfX+q3x2iv8/v6S34uDSdEMcNr0/cFQ58yAGXgKKiR1dSToMxTuOsYFqnekVC42E+BUan5l12hmip9dd7zANXCRDDzisIhw62EbWBzZf+7hgYCu4k5L9n9hjtflviv+7tJcxnscPycqCQa8IV7emAmqHkqWRT723rdWuTUpqFhdWha8kpoY7sn42QWuVbamHwvARVt3b4kM9OkbN3Au78c4Iri4ofKCIImw/vF/hekadTiq+eTfTUGoVPl4H/OR/Z7y5QqVh/bHpuUnW77947WLMLsE/2Eyk1asQEusGk8lRz3Iz12U=
+branches:
+  only:
+  - sources
+before_install:
+- chmod +x hugo/hugo
+install:
+- rm -rf public || exit 0
+script:
+- hugo/hugo
+after_success:
+- cp .travis.yml public
+- bash deploy.sh
