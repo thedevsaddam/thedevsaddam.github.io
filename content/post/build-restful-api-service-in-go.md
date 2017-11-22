@@ -5,7 +5,6 @@ tags: ["go", "golang", "rest api", "gin-gonic", "framework"]
 date: "2017-11-12"
 ---
 
-### Build RESTful API service in golang using gin-gonic framework
 
 Today I’m going to build a simple API for todo application with the golang programming language. I’m going to use golang simplest/fastest framework gin-gonic and a beautiful ORM gorm for our database work. To install these packages go to your workspace `$GOPATH/src` and run these command below:
 
