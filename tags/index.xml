@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2017 by Saddam H</copyright>
-    <lastBuildDate>Sat, 11 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 22 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://thedevsaddam.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Api</title>
+      <link>https://thedevsaddam.github.io/tags/api/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/tags/api/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Development</title>
@@ -42,7 +51,7 @@
     <item>
       <title>Go</title>
       <link>https://thedevsaddam.github.io/tags/go/</link>
-      <pubDate>Sun, 12 Nov 2017 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thedevsaddam.github.io/tags/go/</guid>
       <description></description>
@@ -51,9 +60,27 @@
     <item>
       <title>Golang</title>
       <link>https://thedevsaddam.github.io/tags/golang/</link>
-      <pubDate>Sun, 12 Nov 2017 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thedevsaddam.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Request</title>
+      <link>https://thedevsaddam.github.io/tags/request/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/tags/request/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Request Validation</title>
+      <link>https://thedevsaddam.github.io/tags/request-validation/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/tags/request-validation/</guid>
       <description></description>
     </item>
     

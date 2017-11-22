@@ -18,7 +18,7 @@
       <pubDate>Sun, 12 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thedevsaddam.github.io/post/build-restful-api-service-in-go/</guid>
-      <description>Build RESTful API service in golang using gin-gonic framework Today I’m going to build a simple API for todo application with the golang programming language. I’m going to use golang simplest/fastest framework gin-gonic and a beautiful ORM gorm for our database work. To install these packages go to your workspace $GOPATH/src and run these command below:
+      <description>Today I’m going to build a simple API for todo application with the golang programming language. I’m going to use golang simplest/fastest framework gin-gonic and a beautiful ORM gorm for our database work. To install these packages go to your workspace $GOPATH/src and run these command below:
 $ go get gopkg.in/gin-gonic/gin.v1 $ go get -u github.com/jinzhu/gorm $ go get github.com/go-sql-driver/mysql In generic crud application we need the API’s as follows:</description>
     </item>
     

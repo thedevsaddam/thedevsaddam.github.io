@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Api on Coffee time</title>
+    <link>https://thedevsaddam.github.io/tags/api/</link>
+    <description>Recent content in Api on Coffee time</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2017 by Saddam H</copyright>
+    <lastBuildDate>Wed, 22 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thedevsaddam.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>An easy way to validate Go request</title>
+      <link>https://thedevsaddam.github.io/post/an-easy-way-to-validate-golang-request/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/post/an-easy-way-to-validate-golang-request/</guid>
+      <description>When building REST API or web applications using Go, an essential part is to validate the incoming request data. I have worked in some small and medium project in Golang, most of them are micro-services, providing restful api. I have used different way to validate incoming data. Lets start with particular one that I use frequently. For validating application/json or text/plain request, first I build a struct type of that particular request and add a validate method on the struct.</description>
+    </item>
+    
+  </channel>
+</rss>
