@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Let’s make a simple todo app with Go</title>
+
+  
+  
+
+
+
+
+  
+  <meta name="author" content="Saddam H" />
+  <meta name="description" content="Generally Go is perfect for building micro services, but it doesn’t mean that trivial MVC app are not easy to build. Go has built-in support for parsing html template, though we are not going to focus on that.
+First of all let’s write our go code for serving a html page and save it in a directory.
+In our case let’s call the directory todoapp and create a home.tpl file inside it." />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@thedevsaddam" />
+    <meta name="twitter:title" content="Let’s make a simple todo app with Go" />
+    <meta name="twitter:description" content="Generally Go is perfect for building micro services, but it doesn’t mean that trivial MVC app are not easy to build. Go has built-in support for parsing html template, though we are not going to focus on that.
+First of all let’s write our go code for serving a html page and save it in a directory.
+In our case let’s call the directory todoapp and create a home.tpl file inside it." />
+    <meta name="twitter:image" content="https://thedevsaddam.github.io/img/avatar.jpg" />
+  
+
+
+
+
+<meta name="generator" content="Hugo 0.31-DEV" />
+
+
+<link rel="canonical" href="https://thedevsaddam.github.io/post/lets-make-a-simple-todo-app-with-go/" />
+<link rel="alternative" href="https://thedevsaddam.github.io/index.xml" title="Coffee time" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="tz-hi3YdV_-s4rWQsQr1-YeYBoJL-ZNMIr6Kx4d-rVo" />
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Coffee time" />
+<meta name="msapplication-tooltip" content="Coffee time" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://thedevsaddam.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://thedevsaddam.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://thedevsaddam.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://thedevsaddam.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://thedevsaddam.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://thedevsaddam.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://thedevsaddam.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://thedevsaddam.github.io/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">Coffee time</h2>
+  
+  <p class="subtitle">~ Make your coffee time worth ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item  is-active"><a href="https://thedevsaddam.github.io/">Home</a></li>
+      
+        <li class="menu-item "><a href="https://thedevsaddam.github.io/links/">Links</a></li>
+      
+        <li class="menu-item "><a href="https://thedevsaddam.github.io/about/">About</a></li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:thedevsaddam@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/thedevsaddam" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/thedevsaddam" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/thedevsaddam" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      <li class="social-item">
+        <a href="//www.instagram.com/thedevsaddam" title="Instagram"><span class="icon icon-instagram"></span></a>
+      </li>
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//medium.com/@thedevsaddam" title="Medium"><span class="icon icon-medium"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.quora.com/profile/thedevsaddam" title="Quora"><span class="icon icon-quora"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/thedevsaddam" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://thedevsaddam.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Let’s make a simple todo app with Go</h1>
+      <p class="post-meta">@Saddam H · Nov 24, 2017 · 5 min read</p>
+    </header>
+    <article class="post-content"><p><img src="https://thedevsaddam.github.io/media/posts/lets-make-a-simple-todo-app-with-Go/todo-app.png" alt="todo application" /></p>
+
+<p>Generally Go is perfect for building micro services, but it doesn’t mean that trivial MVC app are not easy to build. Go has built-in support for parsing html template, though we are not going to focus on that.</p>
+
+<p>First of all let’s write our go code for serving a html page and save it in a directory.</p>
+
+<p>In our case let’s call the directory todoapp and create a home.tpl file inside it. Paste the html in home.tpl, it doing some http call to our backend application.</p>
+
+<script src="//gist.github.com/thedevsaddam/92458365a430d2b6728d83395f14b3da.js"></script>
+
+<p>I am not going to describe about the template and vue.js written in the template file in this article.</p>
+
+<p>Let’s start building the backend, create a <code>main.go</code> file inside the same directory where the <code>home.tpl</code> reside.</p>
+
+<p><em>We are using chi-router for routing, mgo for mongodb to persist our data and renderer to render response</em>. You can install those packages using go get see the command below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ go get github.com/go-chi/chi
+$ go get gopkg.in/mgo.v2
+$ go get github.com/thedevsaddam/renderer</code></pre></div>
+<p>Now start to write our code, open main.go in your favorite editor.</p>
+
+<p>Let initialize the essential constants, variables and create some types to use</p>
+
+<script src="//gist.github.com/thedevsaddam/8f81cba7e2935fa2eac7f0a71a09566f.js"></script>
+
+<p>Let’s describe the above example, between line 4–9 we declared a constant block to define some constants like host name, database name, port etc.</p>
+
+<p>Between line 11–15 we declared two struct <code>todo</code> and <code>todoModel</code>. They both have the same number of fields, fields name also remain same. But in <code>todoModel</code> the ID field is a type of bson.ObjectId. We used bson tag so that mgo package can use the tags. And in our todo we used json tag so that json decoder can use these tags to serialize the Go type to typical json.</p>
+
+<p>If you look the example, we missed the first two lines, where we declared two variables, first one is going to hold data type of pointer to renderer.Render and second one pointer to mgo.Database. See the code between line 27–33, wehere we initialized those two variables.</p>
+
+<p>Lets begin to see our part two of the code</p>
+
+<script src="//gist.github.com/thedevsaddam/a66b4f877eeff413ddb09186d663a189.js"></script>
+
+<p>If you take a look to the above example, between line 1–4 we wrote a function <code>homeHandler</code> which is going to render our home page using the render package.</p>
+
+<p>Between line 6–37 we wrote our <code>main</code> function which is our entry point. Inside main function at line 7 we created a channel type of os.Signal and at line 8 we register the channel to os.Signal package with an argument os.Interrupt which basically listen to os signals, if use signal cancel (ctrl+c) then notify the channel about the signal. We are using this signal to shutdown our server gracefully. At line 10 we are declaring and initializing a variable as chi router. At line 11 we are using a middleware to called Logger which comes with chi router as a sub-package, it basically log our incoming requests to stdout. At line 16 we declared a http.Server server variable and initialized it using struct literal. Between line 24 -29 we started a goroutine and fired up our server. At line 31 we are releasing the signal from the blocked channel and line 33 we are declaring a context with time out of 5 sec and passing it to the server shout down method. At line 35 we are using defer statement as soon as the main function ends the deferred cancel is called and release the context resources. At lien 14 we mounted a route group called todo and between line 39–48 we registered a route group which contains 4 routes.</p>
+
+<p>Lets write the third part of the code</p>
+
+<script src="//gist.github.com/thedevsaddam/666559abe98aeb67b27387eab8974497.js"></script>
+
+<p>In the above example line between 1–36 we wrote our <code>createTodo</code> function which is responsible for creating a new todo. At line 2 we we declared a variable of type todo and between line 4–7 we decode the incoming request json data to our <code>t</code> variable, if it fails we return a json reply to user using renderer.JSON() method. Betwen line 10–15 we checked if the title is empty then we send a json reposne to user. At line 18 we declared <code>tm</code> and initialized using struct literal with the incoming data form t variable and other information. Between line 24–30 we inserted the data to mondo db. Finally at 76 we sending a <code>json</code> reply to user that the todo created with the <code>todo_id</code></p>
+
+<p>If you see the <code>updateTodo</code> and <code>deleteTodo</code> functions we are doing similar type of work. When we are fetching todo list form mongo db we are using <code>fetchTodos</code> function. Between line 94–102 we are transforming the fetched <code>todoModel</code> data to <code>todo</code> type and sending the list to consumer as json. Thats it!</p>
+
+<p>As you see I have written the article in a random order to tell you the story, it may be hard for a beginner to write the full source code and run it properly. Don’t worry, <a href="https://github.com/thedevsaddam/todoapp">here is the full source code</a>. Clone the source code to your <code>$GOPATH/src</code> directory, use <code>go get .</code> command to run the install the dependencies.</p>
+
+<p>If you have any problem to understand any part of the article, or have any feedback or found anything that misleading please let me know using the comment section below :)</p>
+
+<p><em>If you like the article don’t forget to let me know, hit the appreciate button and share the article with others.</em></p>
+
+<blockquote>
+<p>Note: I’ll try to update the article based on your feedback, and if you have any question about the template part I’ll write about it soon. Thank you
+If you like my writing please follow me <a href="https://github.com/thedevsaddam">Saddam H</a>.</p>
+</blockquote>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://thedevsaddam.github.io/tags/go"><span class="tag">Go</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/golang"><span class="tag">Golang</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/todo"><span class="tag">Todo</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/beginner"><span class="tag">Beginner</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/vuejs"><span class="tag">Vuejs</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        Copyright © 2017 by Saddam H
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thedevsaddam" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017 Coffee time</p>
+  
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://thedevsaddam.github.io/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-109646237-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>

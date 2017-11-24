@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vuejs on Coffee time</title>
+    <link>https://thedevsaddam.github.io/tags/vuejs/</link>
+    <description>Recent content in Vuejs on Coffee time</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2017 by Saddam H</copyright>
+    <lastBuildDate>Fri, 24 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thedevsaddam.github.io/tags/vuejs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Let’s make a simple todo app with Go</title>
+      <link>https://thedevsaddam.github.io/post/lets-make-a-simple-todo-app-with-go/</link>
+      <pubDate>Fri, 24 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/post/lets-make-a-simple-todo-app-with-go/</guid>
+      <description>Generally Go is perfect for building micro services, but it doesn’t mean that trivial MVC app are not easy to build. Go has built-in support for parsing html template, though we are not going to focus on that.
+First of all let’s write our go code for serving a html page and save it in a directory.
+In our case let’s call the directory todoapp and create a home.tpl file inside it.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>Beginner</title>
+      <link>https://thedevsaddam.github.io/tags/beginner/</link>
+      <pubDate>Fri, 24 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/tags/beginner/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Development</title>
       <link>https://thedevsaddam.github.io/tags/development/</link>
       <pubDate>Sat, 11 Nov 2017 00:00:00 +0000</pubDate>
@@ -51,7 +60,7 @@
     <item>
       <title>Go</title>
       <link>https://thedevsaddam.github.io/tags/go/</link>
-      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 24 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thedevsaddam.github.io/tags/go/</guid>
       <description></description>
@@ -60,7 +69,7 @@
     <item>
       <title>Golang</title>
       <link>https://thedevsaddam.github.io/tags/golang/</link>
-      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 24 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thedevsaddam.github.io/tags/golang/</guid>
       <description></description>
@@ -103,11 +112,29 @@
     </item>
     
     <item>
+      <title>Todo</title>
+      <link>https://thedevsaddam.github.io/tags/todo/</link>
+      <pubDate>Fri, 24 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/tags/todo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Tutorial</title>
       <link>https://thedevsaddam.github.io/tags/tutorial/</link>
       <pubDate>Sat, 11 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thedevsaddam.github.io/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vuejs</title>
+      <link>https://thedevsaddam.github.io/tags/vuejs/</link>
+      <pubDate>Fri, 24 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/tags/vuejs/</guid>
       <description></description>
     </item>
     

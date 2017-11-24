@@ -33,6 +33,17 @@ I am familiar with programming from 2009. At that time I started programming in 
     </item>
     
     <item>
+      <title>Let’s make a simple todo app with Go</title>
+      <link>https://thedevsaddam.github.io/post/lets-make-a-simple-todo-app-with-go/</link>
+      <pubDate>Fri, 24 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/post/lets-make-a-simple-todo-app-with-go/</guid>
+      <description>Generally Go is perfect for building micro services, but it doesn’t mean that trivial MVC app are not easy to build. Go has built-in support for parsing html template, though we are not going to focus on that.
+First of all let’s write our go code for serving a html page and save it in a directory.
+In our case let’s call the directory todoapp and create a home.tpl file inside it.</description>
+    </item>
+    
+    <item>
       <title>An easy way to validate Go request</title>
       <link>https://thedevsaddam.github.io/post/an-easy-way-to-validate-golang-request/</link>
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
