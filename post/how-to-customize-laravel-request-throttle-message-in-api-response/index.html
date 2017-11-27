@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>How to customize Laravel request throttle message in API response?</title>
+
+  
+  
+
+
+
+
+  
+  <meta name="author" content="Saddam H" />
+  <meta name="description" content="When you are using laravel api, then you must use throttling to protect your api from scrapping or any other attack. When you are limiting your api using laravel throttle then you get a html response message containing &amp;ldquo;Too Many Attempts.&amp;rdquo;
+In order to change the message in a custom format and json reponse follow the steps below:
+Create a new file ThrottleRequestsMiddleware.php in __ app/Http/Middleware/__ and paste the code below:" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@thedevsaddam" />
+    <meta name="twitter:title" content="How to customize Laravel request throttle message in API response?" />
+    <meta name="twitter:description" content="When you are using laravel api, then you must use throttling to protect your api from scrapping or any other attack. When you are limiting your api using laravel throttle then you get a html response message containing &amp;ldquo;Too Many Attempts.&amp;rdquo;
+In order to change the message in a custom format and json reponse follow the steps below:
+Create a new file ThrottleRequestsMiddleware.php in __ app/Http/Middleware/__ and paste the code below:" />
+    <meta name="twitter:image" content="https://thedevsaddam.github.io/img/avatar.jpg" />
+  
+
+
+
+
+<meta name="generator" content="Hugo 0.31-DEV" />
+
+
+<link rel="canonical" href="https://thedevsaddam.github.io/post/how-to-customize-laravel-request-throttle-message-in-api-response/" />
+<link rel="alternative" href="https://thedevsaddam.github.io/index.xml" title="Coffee time" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="tz-hi3YdV_-s4rWQsQr1-YeYBoJL-ZNMIr6Kx4d-rVo" />
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Coffee time" />
+<meta name="msapplication-tooltip" content="Coffee time" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://thedevsaddam.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://thedevsaddam.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://thedevsaddam.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://thedevsaddam.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://thedevsaddam.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://thedevsaddam.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://thedevsaddam.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://thedevsaddam.github.io/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">Coffee time</h2>
+  
+  <p class="subtitle">~ Make your coffee time worth ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item  is-active"><a href="https://thedevsaddam.github.io/">Home</a></li>
+      
+        <li class="menu-item "><a href="https://thedevsaddam.github.io/links/">Links</a></li>
+      
+        <li class="menu-item "><a href="https://thedevsaddam.github.io/about/">About</a></li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:thedevsaddam@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/thedevsaddam" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/thedevsaddam" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/thedevsaddam" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      <li class="social-item">
+        <a href="//www.instagram.com/thedevsaddam" title="Instagram"><span class="icon icon-instagram"></span></a>
+      </li>
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//medium.com/@thedevsaddam" title="Medium"><span class="icon icon-medium"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.quora.com/profile/thedevsaddam" title="Quora"><span class="icon icon-quora"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/thedevsaddam" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://thedevsaddam.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">How to customize Laravel request throttle message in API response?</h1>
+      <p class="post-meta">@Saddam H · Nov 27, 2017 · 3 min read</p>
+    </header>
+    <article class="post-content"><p>When you are using laravel api, then you must use throttling to protect your api from scrapping or any other attack. When you are limiting your api using laravel throttle then you get a html response message containing &ldquo;Too Many Attempts.&rdquo;</p>
+
+<p>In order to change the message in a custom format and json reponse follow the steps below:</p>
+
+<p>Create a new file ThrottleRequestsMiddleware.php in __ app/Http/Middleware/__ and paste the code below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Middleware</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Closure</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Cache\RateLimiter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ThrottleRequestsMiddleware</span>
+<span class="p">{</span>
+    <span class="sd">/**
+</span><span class="sd">     * The rate limiter instance.
+</span><span class="sd">     *
+</span><span class="sd">     * @var \Illuminate\Cache\RateLimiter
+</span><span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$limiter</span><span class="p">;</span>
+
+    <span class="sd">/**
+</span><span class="sd">     * Create a new request throttler.
+</span><span class="sd">     *
+</span><span class="sd">     * @param  \Illuminate\Cache\RateLimiter $limiter
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="fm">__construct</span><span class="p">(</span><span class="nx">RateLimiter</span> <span class="nv">$limiter</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">limiter</span> <span class="o">=</span> <span class="nv">$limiter</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+</span><span class="sd">     * Handle an incoming request.
+</span><span class="sd">     *
+</span><span class="sd">     * @param  \Illuminate\Http\Request $request
+</span><span class="sd">     * @param  \Closure $next
+</span><span class="sd">     * @param  int $maxAttempts
+</span><span class="sd">     * @param  int $decayMinutes
+</span><span class="sd">     * @return mixed
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">handle</span><span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="nx">Closure</span> <span class="nv">$next</span><span class="p">,</span> <span class="nv">$maxAttempts</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="nv">$decayMinutes</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$key</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resolveRequestSignature</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">limiter</span><span class="o">-&gt;</span><span class="na">tooManyAttempts</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$maxAttempts</span><span class="p">,</span> <span class="nv">$decayMinutes</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildResponse</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$maxAttempts</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">limiter</span><span class="o">-&gt;</span><span class="na">hit</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$decayMinutes</span><span class="p">);</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$next</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addHeaders</span><span class="p">(</span>
+            <span class="nv">$response</span><span class="p">,</span> <span class="nv">$maxAttempts</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calculateRemainingAttempts</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$maxAttempts</span><span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+</span><span class="sd">     * Resolve request signature.
+</span><span class="sd">     *
+</span><span class="sd">     * @param  \Illuminate\Http\Request $request
+</span><span class="sd">     * @return string
+</span><span class="sd">     */</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="o"></span><span class="nf">resolveRequestSignature</span><span class="p">(</span><span class="nv">$request</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">fingerprint</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+</span><span class="sd">     * Create a &#39;too many attempts&#39; response.
+</span><span class="sd">     *
+</span><span class="sd">     * @param  string $key
+</span><span class="sd">     * @param  int $maxAttempts
+</span><span class="sd">     * @return \Illuminate\Http\Response
+</span><span class="sd">     */</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="o"></span><span class="nf">buildResponse</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$maxAttempts</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="nx">json_encode</span><span class="p">([</span>
+            <span class="s1">&#39;error&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Too many attempts, please slow down the request.&#39;</span> <span class="c1">//may comes from lang file
+</span><span class="c1"></span>            <span class="p">],</span>
+            <span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="mi">4029</span> <span class="c1">//your custom code
+</span><span class="c1"></span>        <span class="p">]);</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="mi">429</span><span class="p">);</span>
+
+        <span class="nv">$retryAfter</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">limiter</span><span class="o">-&gt;</span><span class="na">availableIn</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addHeaders</span><span class="p">(</span>
+            <span class="nv">$response</span><span class="p">,</span> <span class="nv">$maxAttempts</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calculateRemainingAttempts</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$maxAttempts</span><span class="p">,</span> <span class="nv">$retryAfter</span><span class="p">),</span>
+            <span class="nv">$retryAfter</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+</span><span class="sd">     * Add the limit header information to the given response.
+</span><span class="sd">     *
+</span><span class="sd">     * @param  \Symfony\Component\HttpFoundation\Response $response
+</span><span class="sd">     * @param  int $maxAttempts
+</span><span class="sd">     * @param  int $remainingAttempts
+</span><span class="sd">     * @param  int|null $retryAfter
+</span><span class="sd">     * @return \Illuminate\Http\Response
+</span><span class="sd">     */</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="o"></span><span class="nf">addHeaders</span><span class="p">(</span><span class="nx">Response</span> <span class="nv">$response</span><span class="p">,</span> <span class="nv">$maxAttempts</span><span class="p">,</span> <span class="nv">$remainingAttempts</span><span class="p">,</span> <span class="nv">$retryAfter</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;X-RateLimit-Limit&#39;</span> <span class="o">=&gt;</span> <span class="nv">$maxAttempts</span><span class="p">,</span>
+            <span class="s1">&#39;X-RateLimit-Remaining&#39;</span> <span class="o">=&gt;</span> <span class="nv">$remainingAttempts</span><span class="p">,</span>
+        <span class="p">];</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">is_null</span><span class="p">(</span><span class="nv">$retryAfter</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$headers</span><span class="p">[</span><span class="s1">&#39;Retry-After&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$retryAfter</span><span class="p">;</span>
+            <span class="nv">$headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;application/json&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">headers</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$headers</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**
+</span><span class="sd">     * Calculate the number of remaining attempts.
+</span><span class="sd">     *
+</span><span class="sd">     * @param  string $key
+</span><span class="sd">     * @param  int $maxAttempts
+</span><span class="sd">     * @param  int|null $retryAfter
+</span><span class="sd">     * @return int
+</span><span class="sd">     */</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="o"></span><span class="nf">calculateRemainingAttempts</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$maxAttempts</span><span class="p">,</span> <span class="nv">$retryAfter</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">is_null</span><span class="p">(</span><span class="nv">$retryAfter</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">limiter</span><span class="o">-&gt;</span><span class="na">retriesLeft</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$maxAttempts</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>Then go to your <code>kernel.php</code> file in <em>app/Http/</em> directory and replace</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="x">&#39;throttle&#39; =&gt; \Illuminate\Routing\Middleware\ThrottleRequests::class,</span></code></pre></div>
+<p>with</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="x">&#39;throttle&#39; =&gt; \App\Middleware\ThrottleRequestsMiddleware::class,</span></code></pre></div>
+<p>Note: You an extend the base ThrottleRequests class and override the responsible methods, but I am lazy to do that rather I like to copy-paste.</p>
+
+<p>Hope this will work fine :)</p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://thedevsaddam.github.io/tags/php"><span class="tag">Php</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/laravel"><span class="tag">Laravel</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/lumen"><span class="tag">Lumen</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/api"><span class="tag">Api</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/throttle"><span class="tag">Throttle</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        Copyright © 2017 by Saddam H
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thedevsaddam" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017 Coffee time</p>
+  
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://thedevsaddam.github.io/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-109646237-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>

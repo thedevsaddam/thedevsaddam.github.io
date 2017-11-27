@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2017 by Saddam H</copyright>
-    <lastBuildDate>Fri, 24 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://thedevsaddam.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to customize Laravel request throttle message in API response?</title>
+      <link>https://thedevsaddam.github.io/post/how-to-customize-laravel-request-throttle-message-in-api-response/</link>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/post/how-to-customize-laravel-request-throttle-message-in-api-response/</guid>
+      <description>When you are using laravel api, then you must use throttling to protect your api from scrapping or any other attack. When you are limiting your api using laravel throttle then you get a html response message containing &amp;ldquo;Too Many Attempts.&amp;rdquo;
+In order to change the message in a custom format and json reponse follow the steps below:
+Create a new file ThrottleRequestsMiddleware.php in __ app/Http/Middleware/__ and paste the code below:</description>
+    </item>
     
     <item>
       <title>Let’s make a simple todo app with Go</title>

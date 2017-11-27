@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>https://thedevsaddam.github.io/post/how-to-customize-laravel-request-throttle-message-in-api-response/</loc>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://thedevsaddam.github.io/post/lets-make-a-simple-todo-app-with-go/</loc>
     <lastmod>2017-11-24T00:00:00+00:00</lastmod>
   </url>
@@ -34,7 +39,7 @@
   
   <url>
     <loc>https://thedevsaddam.github.io/tags/api/</loc>
-    <lastmod>2017-11-22T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -86,8 +91,26 @@
   </url>
   
   <url>
+    <loc>https://thedevsaddam.github.io/tags/laravel/</loc>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thedevsaddam.github.io/tags/lumen/</loc>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thedevsaddam.github.io/tags/php/</loc>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://thedevsaddam.github.io/post/</loc>
-    <lastmod>2017-11-24T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -111,13 +134,19 @@
   
   <url>
     <loc>https://thedevsaddam.github.io/tags/</loc>
-    <lastmod>2017-11-22T00:00:00+00:00</lastmod>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://thedevsaddam.github.io/tags/thedevsaddam/</loc>
     <lastmod>2017-11-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thedevsaddam.github.io/tags/throttle/</loc>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
