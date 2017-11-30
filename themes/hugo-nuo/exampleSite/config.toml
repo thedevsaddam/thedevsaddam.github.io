@@ -3,7 +3,6 @@ languageCode = "en"
 title = "Hugo Blog"
 theme = "hugo-nuo"
 enableRobotsTXT = true
-pygmentsuseclasses = true
 PygmentsCodeFences = true
 canonifyurls = true
 
@@ -28,6 +27,12 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
   weight = 20
   identifier = "works"
   url = "https://github.com/laozhu"
+
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
 
 # Add your own params here
 [params]

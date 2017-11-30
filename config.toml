@@ -33,6 +33,12 @@ copyright = "Copyright © 2017 by Saddam H"
 #   identifier = "works"
 #   url = "https://github.com/laozhu"
 
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
+  
 # Add your own params here
 [params]
   author = "Saddam H"
