@@ -27,3 +27,4 @@ Favorite movies:
 * The Man from Nowhere 2010
 * Around the World in 80 Days
 * Hacksaw Ridge
+* Bridge of spies
