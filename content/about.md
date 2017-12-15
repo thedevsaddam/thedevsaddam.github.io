@@ -24,6 +24,8 @@ Favorite movies:
 
 * [The Shawshank Redemption](https://en.wikipedia.org/wiki/The_Shawshank_Redemption)
 * [The Angriest Man in Brooklyn](https://en.wikipedia.org/wiki/The_Angriest_Man_in_Brooklyn)
+* [Forrest Gump](https://en.wikipedia.org/wiki/Forrest_Gump)
+* [Saving Private Ryan](https://en.wikipedia.org/wiki/Saving_Private_Ryan)
 * [The Man from Nowhere 2010](https://en.wikipedia.org/wiki/The_Man_from_Nowhere_(film))
 * [Around the World in 80 Days](http://www.imdb.com/title/tt0327437/)
 * [Hacksaw Ridge](https://en.wikipedia.org/wiki/Hacksaw_Ridge)
