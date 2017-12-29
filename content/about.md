@@ -30,7 +30,6 @@ Favorite movies:
 * [Around the World in 80 Days](http://www.imdb.com/title/tt0327437/)
 * [Hacksaw Ridge](https://en.wikipedia.org/wiki/Hacksaw_Ridge)
 * [Bridge of spies](http://www.imdb.com/title/tt3682448/)
-*
 
 Actor/Actress movies:
 
