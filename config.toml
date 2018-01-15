@@ -38,11 +38,11 @@ copyright = "Copyright © 2017 by Saddam H"
   weight = 30
   identifier = "tags"
   url = "/tags/"
-  
+
 # Add your own params here
 [params]
   author = "Saddam H"
-  avatar = "/images/avatar.png"
+  avatar = "/images/saddam.jpg"
   seotitle = "Coffee time"
   subtitle = "~ Make your coffee time worth ~"
   description = "Software Engineer, Pathao Inc | Open Source Enthusiast | Love to write elegant code | Gopher, thirsty for exploring new tech tools"
