@@ -1,17 +1,23 @@
-01_chekun:
+01_task:
   title: Terminal task
   link: https://github.com/thedevsaddam/task
   avatar: /media/links/task.png
   description: Terminal tasks todo with reminder tool for geek
 
-02_wangbo:
+02_govalidator:
   title: Govalidator
   link: https://github.com/thedevsaddam/govalidator
   avatar: /media/links/govalidator.png
   description: Validate Golang request data with simple rules. Highly inspired by Laravel's request validation.
 
-03_yuanxuxu:
+03_renderer:
   title: Renderer
   link: https://github.com/thedevsaddam/renderer
   avatar: /media/links/renderer.png
   description: Simple, lightweight and faster response (JSON, JSONP, XML, YAML, HTML, File) rendering package for Go
+
+04_retry:
+  title: Retry
+  link: https://github.com/thedevsaddam/retry
+  avatar: /media/links/retry.png
+  description: Simple and easy retry mechanism package for Go
