@@ -21,3 +21,9 @@
   link: https://github.com/thedevsaddam/retry
   avatar: /media/links/retry.png
   description: Simple and easy retry mechanism package for Go
+
+05_gojonq:
+  title: GoJsonQ
+  link: https://github.com/thedevsaddam/gojsonq
+  avatar: /media/links/gojsonq.png
+  description: A simple Go package to Query over JSON Data
