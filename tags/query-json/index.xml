@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Query Json on Coffee time</title>
+    <link>https://thedevsaddam.github.io/tags/query-json/</link>
+    <description>Recent content in Query Json on Coffee time</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2017 by Saddam H</copyright>
+    <lastBuildDate>Tue, 29 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thedevsaddam.github.io/tags/query-json/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Query JSON data using Golang (gojsonq package)</title>
+      <link>https://thedevsaddam.github.io/post/query-json-data-using-golang-gojsonq/</link>
+      <pubDate>Tue, 29 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/post/query-json-data-using-golang-gojsonq/</guid>
+      <description>Most often developer needs to consume JSON data from other service and query over them. Querying JSON data is little time consuming. For the last few days I was working on a package for Golang to query JSON data easily. The idea and inspiration comes form PHP-JSONQ by Nahid Bin Azhar. Lets take a sample JSON data to start with:
+ Now we are ready to query the data, lets see some examples</description>
+    </item>
+    
+  </channel>
+</rss>

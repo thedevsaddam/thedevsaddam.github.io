@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
 
   
-  <title>Code for coffee time</title>
+  <title>Query JSON data using Golang (gojsonq package)</title>
 
   
   
@@ -16,16 +16,16 @@
 
   
   <meta name="author" content="Saddam H" />
-  <meta name="description" content="What to read in your favorite coffee time? Don&amp;rsquo;t worry, I&amp;rsquo;ll try to make your coffee time more interesting. Hope that will worth your time :)
-As yo already know I am a new born gopher, I love this language so much, thats the reason I&amp;rsquo;ll try to write in my free time. I am interested to write not only Go but also some other cool tech staff" />
+  <meta name="description" content="Most often developer needs to consume JSON data from other service and query over them. Querying JSON data is little time consuming. For the last few days I was working on a package for Golang to query JSON data easily. The idea and inspiration comes form PHP-JSONQ by Nahid Bin Azhar. Lets take a sample JSON data to start with:
+ Now we are ready to query the data, lets see some examples" />
 
   
   
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@thedevsaddam" />
-    <meta name="twitter:title" content="Code for coffee time" />
-    <meta name="twitter:description" content="What to read in your favorite coffee time? Don&amp;rsquo;t worry, I&amp;rsquo;ll try to make your coffee time more interesting. Hope that will worth your time :)
-As yo already know I am a new born gopher, I love this language so much, thats the reason I&amp;rsquo;ll try to write in my free time. I am interested to write not only Go but also some other cool tech staff" />
+    <meta name="twitter:title" content="Query JSON data using Golang (gojsonq package)" />
+    <meta name="twitter:description" content="Most often developer needs to consume JSON data from other service and query over them. Querying JSON data is little time consuming. For the last few days I was working on a package for Golang to query JSON data easily. The idea and inspiration comes form PHP-JSONQ by Nahid Bin Azhar. Lets take a sample JSON data to start with:
+ Now we are ready to query the data, lets see some examples" />
     <meta name="twitter:image" content="https://thedevsaddam.github.io/img/avatar.jpg" />
   
 
@@ -35,7 +35,7 @@ As yo already know I am a new born gopher, I love this language so much, thats t
 <meta name="generator" content="Hugo 0.31-DEV" />
 
 
-<link rel="canonical" href="https://thedevsaddam.github.io/post/coffee-time/" />
+<link rel="canonical" href="https://thedevsaddam.github.io/post/query-json-data-using-golang-gojsonq/" />
 <link rel="alternative" href="https://thedevsaddam.github.io/index.xml" title="Coffee time" type="application/atom+xml" />
 
 
@@ -228,13 +228,73 @@ As yo already know I am a new born gopher, I love this language so much, thats t
 
   <section class="main post-detail">
     <header class="post-header">
-      <h1 class="post-title">Code for coffee time</h1>
-      <p class="post-meta">@Saddam H · Nov 11, 2017 · 1 min read</p>
+      <h1 class="post-title">Query JSON data using Golang (gojsonq package)</h1>
+      <p class="post-meta">@Saddam H · May 29, 2018 · 2 min read</p>
     </header>
-    <article class="post-content"><p>What to read in your favorite coffee time? Don&rsquo;t worry, I&rsquo;ll try to make your coffee time more interesting. Hope that will worth your time :)</p>
+    <article class="post-content">
 
-<p>As yo already know I am a new born gopher, I love this language so much, thats the reason I&rsquo;ll try to write in my free time.
-I am interested to write not only Go but also some other cool tech staff</p>
+<p>Most often developer needs to consume JSON data from other service and query over them. Querying JSON data is little time consuming. For the last few days I was working on a package for Golang to query JSON data easily. The idea and inspiration comes form PHP-JSONQ by Nahid Bin Azhar.
+Lets take a sample JSON data to start with:</p>
+
+<script src="//gist.github.com/thedevsaddam/ee7f25adb9f4278ce0ef37b8d28bed98.js"></script>
+
+<p>Now we are ready to query the data, lets see some examples</p>
+
+<h3 id="example-1">Example 1</h3>
+
+<p>Query: select * from vendor.items where price &gt; 1200 or id null
+Using gojsonq we can do the query like:</p>
+
+<script src="//gist.github.com/thedevsaddam/06b19c3375b943619a3eb8c7555f6504.js"></script>
+
+<h3 id="example-2">Example 2</h3>
+
+<p>Query: select name, price from vendor.items where price &gt; 1200 or id null
+Using gojsonq we can do the query like:</p>
+
+<script src="//gist.github.com/thedevsaddam/19de6e4aa48924a7f492e6e7749fc450.js"></script>
+
+<h3 id="example-3">Example 3</h3>
+
+<p>Query: select sum(price) from vendor.items where price &gt; 1200 or id null
+Using gojsonq we can do the query like:</p>
+
+<script src="//gist.github.com/thedevsaddam/4f807403b5a88b8b50521e9dedf67352.js"></script>
+
+<p>Note you can use other aggregation function like Min/Max/Avg/Count`</p>
+
+<p>###Example 4
+Query: select price from vendor.items where price &gt; 1200
+Using gojsonq we can do the query like:</p>
+
+<script src="//gist.github.com/thedevsaddam/4d7eeba49f3b77cba1da78d3bc13fb49.js"></script>
+
+<p>Note: You&rsquo;ll get a plain array of price</p>
+
+<h3 id="example-5">Example 5</h3>
+
+<p>Query: select * from vendor.items order by price
+Using gojsonq we can do the query like:</p>
+
+<script src="//gist.github.com/thedevsaddam/ca0b5adb81772e808b25dbfffa26cd47.js"></script>
+
+<h3 id="example-6">Example 6</h3>
+
+<p>Query: select description from .
+Using gojsonq we can do the query like:</p>
+
+<script src="//gist.github.com/thedevsaddam/6819b4ae4e7d6c52cde58a7ae3e52d60.js"></script>
+
+<p>There are some other useful methods available in the package. The package is still under heavy development! If you have any suggestion or bug report don&rsquo;t forget to open an issue
+If you are not using Go, you can also use the same implementation of the package using PHP, Javascript, Python and Kotlin. Links are listed below:
+php-jsonq
+js-jsonq
+py-jsonq
+kotlin-jsonq</p>
+
+<p>If you like the idea don&rsquo;t forget to give a STAR :)
+GithubLink for gojsonq
+Thank you very much for reading the article</p>
 </article>
     <footer class="post-footer">
       
@@ -244,16 +304,16 @@ I am interested to write not only Go but also some other cool tech staff</p>
         
           <li><a href="https://thedevsaddam.github.io/tags/golang"><span class="tag">Golang</span></a></li>
         
-          <li><a href="https://thedevsaddam.github.io/tags/thedevsaddam"><span class="tag">Thedevsaddam</span></a></li>
+          <li><a href="https://thedevsaddam.github.io/tags/gojsonq"><span class="tag">Gojsonq</span></a></li>
         
-          <li><a href="https://thedevsaddam.github.io/tags/development"><span class="tag">Development</span></a></li>
+          <li><a href="https://thedevsaddam.github.io/tags/query-json"><span class="tag">Query Json</span></a></li>
         
-          <li><a href="https://thedevsaddam.github.io/tags/tutorial"><span class="tag">Tutorial</span></a></li>
+          <li><a href="https://thedevsaddam.github.io/tags/golang-query-from-json"><span class="tag">Golang Query From Json</span></a></li>
         
       </ul>
       
       <p class="post-copyright">
-        Copyright © 2017 by Saddam HThis post was published <strong>208</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+        Copyright © 2017 by Saddam H
       </p>
     </footer>
     
