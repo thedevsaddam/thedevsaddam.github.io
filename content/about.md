@@ -5,22 +5,32 @@ layout: "about"
 menu: "main"
 weight: 40
 ---
-> ***Software engineer at Pathao Inc, love technology, love to spend  time with learning new thing***
+> ***Software engineer at Pathao Inc, love to spend time by learning new technology/architecture/design***
 
-Love to drink coffee, watching movies. Dream to do something for the world. In free time go to Cineplex and watch movies.. Recently in holidays I used to watch movies all the night at home. Trying to enjoy the life as it is.
+Love to drink coffee, watch movies. In free time go to Cineplex and watch movies.. Recently in holidays I used to watch movies/tv series all the night at home. Trying to enjoy the life as it is.
 
 
-I started programming using QBASIC and C language.  After then started to learn different language like Visual Basic, Java, PHP, Python, Javascript and different software related technologies like vps, docker, kubernetes, micor-services etc.  As I love Go (aka Golang) more than any other programming language and most of the time I spent writing different services, packages in Go.  I'm familiar with different php and js libraries & frameworks like Laravel, Lumen, Codeigniter, jQuery, React and Vue.js etc. Spending almost 14 Hrs a day with different tech stack, contributing/reading open source projects and reading article some where in web.
+I started programming with QBASIC and C language at college. After then started to learn different language like Visual Basic, Java, PHP, Golang, Javascript and different software related technologies like vps, docker, kubernetes, micro-services etc. As I love Golang more than any other programming language for now, most of the time I spent writing different services, packages in Go. I'm familiar with different php/JS/Golang libraries & frameworks like Laravel, Lumen, Codeigniter, jQuery, React, Vue.js, Gorilla mux, chi, echo, beego etc. Spending almost 14 Hrs a day with different tech stack, contributing/reading open source projects, reading articles some where in web. Always trying to learn _"how to design better software"_.
 
-Open source contributions:
+### Open source contributions:
 
+* [GoJSONQ](https://github.com/thedevsaddam/gojsonq)
 * [Govalidator](https://github.com/thedevsaddam/govaidator)
-* [Task](https://github.com/thedevsaddam/task)
 * [Renderer](https://github.com/thedevsaddam/renderer)
+* [Task](https://github.com/thedevsaddam/task)
 * [Ubuntu live wallpaper](https://github.com/thedevsaddam/ubuntu-live-wallpaper)
 * [Slack notifier](https://github.com/thedevsaddam/slack-notifier)
 
-Favorite movies:
+### Links:
+
+* [Github](https://github.com/thedevsaddam)
+* [Hackerrank](https://www.hackerrank.com/thedevsaddam)
+* [Medium](https://medium.com/@thedevsaddam)
+* [Linkedin](https://www.linkedin.com/in/thedevsaddam/)
+* [Twitter](https://twitter.com/thedevsaddam)
+* [Hashnode](https://hashnode.com/@thedevsaddam)
+
+### Favorite movies:
 
 * [The Shawshank Redemption](https://en.wikipedia.org/wiki/The_Shawshank_Redemption)
 * [The Angriest Man in Brooklyn](https://en.wikipedia.org/wiki/The_Angriest_Man_in_Brooklyn)
@@ -31,7 +41,7 @@ Favorite movies:
 * [Hacksaw Ridge](https://en.wikipedia.org/wiki/Hacksaw_Ridge)
 * [Bridge of spies](http://www.imdb.com/title/tt3682448/)
 
-Actor/Actress movies:
+### Favorite Actor/Actress:
 
 * [Tom Hanks](https://en.wikipedia.org/wiki/Tom_Hanks)
 * [Morgan Freeman](https://en.wikipedia.org/wiki/Morgan_Freeman)
@@ -44,3 +54,5 @@ Actor/Actress movies:
 * [Gerard Butler](https://en.wikipedia.org/wiki/Gerard_Butler)
 * [Scarlett Johansson](https://en.wikipedia.org/wiki/Scarlett_Johansson)
 * [Angelina Jolie](https://en.wikipedia.org/wiki/Angelina_Jolie)
+
+> Thank you very much for coming down here...
