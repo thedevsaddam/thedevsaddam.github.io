@@ -55,4 +55,8 @@ I started programming with QBASIC and C language at college. After then started 
 * [Scarlett Johansson](https://en.wikipedia.org/wiki/Scarlett_Johansson)
 * [Angelina Jolie](https://en.wikipedia.org/wiki/Angelina_Jolie)
 
+### Credits:
+* Theme [Hugo Nuo](https://github.com/laozhu/hugo-nuo)
+* Icon [Flaticon](https://www.flaticon.com)
+
 > Thank you very much for coming down here...
