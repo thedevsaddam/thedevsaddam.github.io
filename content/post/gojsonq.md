@@ -5,7 +5,7 @@ tags: ["go", "golang", "gojsonq", "jsonq", "json query", "query json data in gol
 date: "2018-07-29"
 ---
 
-![gojsonq-logo](https://cdn.hashnode.com/res/hashnode/image/upload/w_800,c_thumb/v1528991620699/ry6YJMx-m.jpeg)
+![gojsonq-logo](/media/posts/gojsonq/gojsonq.jpeg)
 
 ## API for different queries
 

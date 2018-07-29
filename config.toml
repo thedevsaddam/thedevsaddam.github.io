@@ -42,7 +42,7 @@ copyright = "Copyright © 2017 by Saddam H"
 # Add your own params here
 [params]
   author = "Saddam H"
-  avatar = "/images/saddam.jpg"
+  avatar = "/images/saddam-sq.jpeg"
   seotitle = "Coffee time"
   subtitle = "~ Make your coffee time worth ~"
   description = "Software Engineer, Pathao Inc | Open Source Enthusiast | Love to write elegant code | Gopher, thirsty for exploring new tech tools"
