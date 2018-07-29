@@ -29,7 +29,7 @@
   description: A simple Go package to Query over JSON Data
 
 06_docgen:
-  title: GoJsonQ
+  title: DocGen 
   link: https://github.com/thedevsaddam/docgen
   avatar: /media/links/docgen.png
   description: Transform your postman collection to html documentation
