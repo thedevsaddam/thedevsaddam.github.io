@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>GoJSONQ</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Saddam H" />
+  <meta name="description" content="API for different queries Sample data (data.json)  { &amp;ldquo;name&amp;rdquo;:&amp;ldquo;computers&amp;rdquo;, &amp;ldquo;description&amp;rdquo;:&amp;ldquo;List of computer products&amp;rdquo;, &amp;ldquo;prices&amp;rdquo;:[2400, 2100, 1200, 400.87, 89.90, 150.10], &amp;ldquo;names&amp;rdquo;:[&amp;ldquo;John Doe&amp;rdquo;, &amp;ldquo;Jane Doe&amp;rdquo;, &amp;ldquo;Tom&amp;rdquo;, &amp;ldquo;Jerry&amp;rdquo;, &amp;ldquo;Nicolas&amp;rdquo;, &amp;ldquo;Abby&amp;rdquo;], &amp;ldquo;items&amp;rdquo;:[ { &amp;ldquo;id&amp;rdquo;:1, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;MacBook Pro 13 inch retina&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:1350 }, { &amp;ldquo;id&amp;rdquo;:2, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;MacBook Pro 15 inch retina&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:1700 }, { &amp;ldquo;id&amp;rdquo;:3, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;Sony VAIO&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:1200 }, { &amp;ldquo;id&amp;rdquo;:4, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;Fujitsu&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:850 }, { &amp;ldquo;id&amp;rdquo;:null, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;HP core i3 SSD&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:850 } ] }" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@thedevsaddam" />
+    <meta name="twitter:title" content="GoJSONQ" />
+    <meta name="twitter:description" content="API for different queries Sample data (data.json)  { &amp;ldquo;name&amp;rdquo;:&amp;ldquo;computers&amp;rdquo;, &amp;ldquo;description&amp;rdquo;:&amp;ldquo;List of computer products&amp;rdquo;, &amp;ldquo;prices&amp;rdquo;:[2400, 2100, 1200, 400.87, 89.90, 150.10], &amp;ldquo;names&amp;rdquo;:[&amp;ldquo;John Doe&amp;rdquo;, &amp;ldquo;Jane Doe&amp;rdquo;, &amp;ldquo;Tom&amp;rdquo;, &amp;ldquo;Jerry&amp;rdquo;, &amp;ldquo;Nicolas&amp;rdquo;, &amp;ldquo;Abby&amp;rdquo;], &amp;ldquo;items&amp;rdquo;:[ { &amp;ldquo;id&amp;rdquo;:1, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;MacBook Pro 13 inch retina&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:1350 }, { &amp;ldquo;id&amp;rdquo;:2, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;MacBook Pro 15 inch retina&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:1700 }, { &amp;ldquo;id&amp;rdquo;:3, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;Sony VAIO&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:1200 }, { &amp;ldquo;id&amp;rdquo;:4, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;Fujitsu&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:850 }, { &amp;ldquo;id&amp;rdquo;:null, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;HP core i3 SSD&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:850 } ] }" />
+    <meta name="twitter:image" content="https://thedevsaddam.github.io/img/avatar.jpg" />
+  
+
+
+
+
+<meta name="generator" content="Hugo 0.31-DEV" />
+
+
+<link rel="canonical" href="https://thedevsaddam.github.io/post/gojsonq/" />
+<link rel="alternative" href="https://thedevsaddam.github.io/index.xml" title="Coffee time" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="tz-hi3YdV_-s4rWQsQr1-YeYBoJL-ZNMIr6Kx4d-rVo" />
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Coffee time" />
+<meta name="msapplication-tooltip" content="Coffee time" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://thedevsaddam.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://thedevsaddam.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://thedevsaddam.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://thedevsaddam.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://thedevsaddam.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://thedevsaddam.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://thedevsaddam.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://thedevsaddam.github.io/images/saddam.jpg" alt="Avatar">
+  
+  <h2 class="title">Coffee time</h2>
+  
+  <p class="subtitle">~ Make your coffee time worth ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://thedevsaddam.github.io/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://thedevsaddam.github.io/links/">Links</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://thedevsaddam.github.io/tags/">Tags</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://thedevsaddam.github.io/about/">About</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:thedevsaddam@gmail.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/thedevsaddam" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/thedevsaddam" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/thedevsaddam" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      <li class="social-item">
+        <a href="//www.instagram.com/thedevsaddam" title="Instagram"><span class="icon icon-instagram"></span></a>
+      </li>
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//medium.com/@thedevsaddam" title="Medium"><span class="icon icon-medium"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.quora.com/profile/thedevsaddam" title="Quora"><span class="icon icon-quora"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/thedevsaddam" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://thedevsaddam.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">GoJSONQ</h1>
+      <p class="post-meta">@Saddam H · Jul 29, 2018 · 12 min read</p>
+    </header>
+    <article class="post-content">
+
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/w_800,c_thumb/v1528991620699/ry6YJMx-m.jpeg" alt="gojsonq-logo" /></p>
+
+<h2 id="api-for-different-queries">API for different queries</h2>
+
+<p><details><summary>Sample data (data.json)</summary>
+<pre>
+{
+   &ldquo;name&rdquo;:&ldquo;computers&rdquo;,
+   &ldquo;description&rdquo;:&ldquo;List of computer products&rdquo;,
+   &ldquo;prices&rdquo;:[2400, 2100, 1200, 400.87, 89.90, 150.10],
+   &ldquo;names&rdquo;:[&ldquo;John Doe&rdquo;, &ldquo;Jane Doe&rdquo;, &ldquo;Tom&rdquo;, &ldquo;Jerry&rdquo;, &ldquo;Nicolas&rdquo;, &ldquo;Abby&rdquo;],
+   &ldquo;items&rdquo;:[
+      {
+         &ldquo;id&rdquo;:1,
+         &ldquo;name&rdquo;:&ldquo;MacBook Pro 13 inch retina&rdquo;,
+         &ldquo;price&rdquo;:1350
+      },
+      {
+         &ldquo;id&rdquo;:2,
+         &ldquo;name&rdquo;:&ldquo;MacBook Pro 15 inch retina&rdquo;,
+         &ldquo;price&rdquo;:1700
+      },
+      {
+         &ldquo;id&rdquo;:3,
+         &ldquo;name&rdquo;:&ldquo;Sony VAIO&rdquo;,
+         &ldquo;price&rdquo;:1200
+      },
+      {
+         &ldquo;id&rdquo;:4,
+         &ldquo;name&rdquo;:&ldquo;Fujitsu&rdquo;,
+         &ldquo;price&rdquo;:850
+      },
+      {
+         &ldquo;id&rdquo;:null,
+         &ldquo;name&rdquo;:&ldquo;HP core i3 SSD&rdquo;,
+         &ldquo;price&rdquo;:850
+      }
+   ]
+}
+</pre>
+</details></p>
+
+<p>Following API examples are shown based on the sample JSON data given above. To get a better idea of the examples see that JSON data first.</p>
+
+<p><strong>List of API:</strong></p>
+
+<ul>
+<li><a href="#filepath">File</a></li>
+<li><a href="#jsonstringjson">JSONString</a></li>
+<li><a href="#readerioreader">Reader</a></li>
+<li><a href="#get">Get</a></li>
+<li><a href="#findpath">Find</a></li>
+<li><a href="#frompath">From</a></li>
+<li><a href="#selectproperties">Select</a></li>
+<li><a href="#wherekey-op-val">Where</a></li>
+<li><a href="#orwherekey-op-val">OrWhere</a></li>
+<li><a href="#whereinkey-val">WhereIn</a></li>
+<li><a href="#wherenotinkey-val">WhereNotIn</a></li>
+<li><a href="#wherenilkey">WhereNil</a></li>
+<li><a href="#wherenotnilkey">WhereNotNil</a></li>
+<li><a href="#whereequalkey-val">WhereEqual</a></li>
+<li><a href="#wherenotequalkey-val">WhereNotEqual</a></li>
+<li><a href="#wherestartswithkey-val">WhereStartsWith</a></li>
+<li><a href="#whereendswithkey-val">WhereEndsWith</a></li>
+<li><a href="#wherecontainskey-val">WhereContains</a></li>
+<li><a href="#wherestrictcontainskey-val">WhereStrictContains</a></li>
+<li><a href="#limitval">Limit</a></li>
+<li><a href="#sumproperty">Sum</a></li>
+<li><a href="#count">Count</a></li>
+<li><a href="#maxproperty">Max</a></li>
+<li><a href="#minproperty">Min</a></li>
+<li><a href="#avgproperty">Avg</a></li>
+<li><a href="#first">First</a></li>
+<li><a href="#last">Last</a></li>
+<li><a href="#nthindex">Nth</a></li>
+<li><a href="#groupbyproperty">GroupBy</a></li>
+<li><a href="#sortorder">Sort</a></li>
+<li><a href="#sortbyproperty-order">SortBy</a></li>
+<li><a href="#reset">Reset</a></li>
+<li><a href="#onlyproperties">Only</a></li>
+<li><a href="#pluckproperty">Pluck</a></li>
+<li><a href="#macrooperator-queryfunc">Macro</a></li>
+<li><a href="#copy">Copy</a></li>
+<li><a href="#errors">Errors</a></li>
+<li><a href="#error">Error</a></li>
+</ul>
+
+<h3 id="file-path"><code>File(path)</code></h3>
+
+<p>This method takes a JSON file path as argument for further queries.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">res</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">).</span><span class="nx">Get</span><span class="p">()</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span></code></pre></div>
+<h3 id="jsonstring-json"><code>JSONString(json)</code></h3>
+
+<p>This method takes a valid JSON string as argument for further queries.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">res</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">JSONString</span><span class="p">(</span><span class="s">&#34;[19, 90.9, 7, 67.5]&#34;</span><span class="p">).</span><span class="nx">Sum</span><span class="p">()</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span></code></pre></div>
+<h3 id="reader-io-reader"><code>Reader(io.Reader)</code></h3>
+
+<p>This method takes an <code>io.Reader</code> as argument to read JSON data for further queries.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">strReader</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="s">&#34;[19, 90.9, 7, 67.5]&#34;</span><span class="p">)</span>
+<span class="nx">res</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">Reader</span><span class="p">(</span><span class="nx">strReader</span><span class="p">).</span><span class="nx">Avg</span><span class="p">()</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span></code></pre></div>
+<h3 id="get"><code>Get()</code></h3>
+
+<p>This method will execute queries and will return the resulted data. You need to call it finally after using some query methods. <a href="#filepath">See usage in the above example</a></p>
+
+<h3 id="find-path"><code>Find(path)</code></h3>
+
+<ul>
+<li><code>path</code> &ndash; the path hierarchy of the data you want to find.</li>
+</ul>
+
+<p>You don&rsquo;t need to call <code>Get()</code> method after this. Because this method will fetch and return the data by itself.</p>
+
+<p><strong>caveat:</strong> You can&rsquo;t chain further query methods after it. If you need that, you should use <code>From()</code> method.</p>
+
+<p><strong>example:</strong></p>
+
+<p>Let&rsquo;s say you want to get the value of <em>&lsquo;items&rsquo;</em> property of your JSON Data. You can do it like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">items</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="s">&#34;vendor.items&#34;</span><span class="p">);</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">items</span><span class="p">)</span></code></pre></div>
+<p>If you want to traverse to more deep in hierarchy, you can do it like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">item</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="s">&#34;vendor.items.[0]&#34;</span><span class="p">);</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span></code></pre></div>
+<h3 id="from-path"><code>From(path)</code></h3>
+
+<ul>
+<li><code>path</code> (optional) &ndash; the path hierarchy of the data you want to start query from.</li>
+</ul>
+
+<p>By default, query would be started from the root of the JSON Data you&rsquo;ve given. If you want to first move to a nested path hierarchy of the data from where you want to start your query, you would use this method. Skipping the <code>path</code> parameter or giving <strong>&rsquo;.&rsquo;</strong> as parameter will also start query from the root Data.</p>
+
+<p>Difference between this method and <code>Find()</code> is that <code>Find()</code> method will return the data from the given path hierarchy. On the other hand, this method will return the Object instance, so that you can further chain query methods after it.</p>
+
+<p><strong>Example:</strong></p>
+
+<p>Let&rsquo;s say you want to start query over the values of <em>&lsquo;items&rsquo;</em> property of your JSON Data. You can do it like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">,</span> <span class="s">&#34;&gt;&#34;</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<p>If you want to traverse to more deep in hierarchy, you can do it like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;vendor.items&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">,</span> <span class="s">&#34;&gt;&#34;</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<h3 id="select-properties"><code>Select(properties)</code></h3>
+
+<ul>
+<li><code>properties</code> &ndash; The properties which you want to get in final results. It is similar to <code>Only</code> but the only difference is you can chain <code>Select</code> in any where. To get a clear idea see the example below:</li>
+</ul>
+
+<p><strong>Example</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="s">&#34;name&#34;</span><span class="p">).</span><span class="nx">WhereNotNil</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<p><strong>Output</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="p">[]</span><span class="kd">interface</span> <span class="p">{}{</span>
+    <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span> <span class="p">{}{</span><span class="s">&#34;id&#34;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;name&#34;</span><span class="p">:</span><span class="s">&#34;MacBook Pro 13 inch retina&#34;</span><span class="p">},</span>
+    <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span> <span class="p">{}{</span><span class="s">&#34;id&#34;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#34;name&#34;</span><span class="p">:</span><span class="s">&#34;MacBook Pro 15 inch retina&#34;</span><span class="p">},</span>
+    <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span> <span class="p">{}{</span><span class="s">&#34;id&#34;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s">&#34;name&#34;</span><span class="p">:</span><span class="s">&#34;Sony VAIO&#34;</span><span class="p">},</span>
+    <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span> <span class="p">{}{</span><span class="s">&#34;id&#34;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s">&#34;name&#34;</span><span class="p">:</span><span class="s">&#34;Fujitsu&#34;</span><span class="p">},</span>
+<span class="p">}</span></code></pre></div>
+<p><strong>Note:</strong> You can also select nested property and use <strong>alias</strong> to the property, see the example below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;users&#34;</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="s">&#34;user.name as uname&#34;</span><span class="p">,</span> <span class="s">&#34;user.followers&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<h3 id="where-key-op-val"><code>where(key, op, val)</code></h3>
+
+<ul>
+<li><p><code>key</code> &ndash; the property name of the data.</p></li>
+
+<li><p><code>val</code> &ndash; value to be matched with. It can be a <em>int</em>, <em>string</em>, <em>bool</em> or <em>slice</em> - depending on the <code>op</code>.</p></li>
+
+<li><p><code>op</code> &ndash; operator to be used for matching. The following operators are available to use:</p>
+
+<ul>
+<li><p><code>=</code> : For equality matching</p></li>
+
+<li><p><code>eq</code> : Same as <code>=</code></p></li>
+
+<li><p><code>!=</code> : For not equality matching</p></li>
+
+<li><p><code>neq</code> : Same as <code>!=</code></p></li>
+
+<li><p><code>&lt;&gt;</code> : Same as <code>!=</code></p></li>
+
+<li><p><code>&gt;</code> : Check if value of given <strong>key</strong> in data is Greater than <strong>val</strong></p></li>
+
+<li><p><code>gt</code> : Same as <code>&gt;</code></p></li>
+
+<li><p><code>&lt;</code> : Check if the value of given <strong>key</strong> in data is Less than <strong>val</strong></p></li>
+
+<li><p><code>lt</code> : Same as <code>&lt;</code></p></li>
+
+<li><p><code>&gt;=</code> : Check if the value of given <strong>key</strong> in data is Greater than or Equal of <strong>val</strong></p></li>
+
+<li><p><code>gte</code> : Same as <code>&gt;=</code></p></li>
+
+<li><p><code>&lt;=</code> : Check if the value of given <strong>key</strong> in data is Less than or Equal of <strong>val</strong></p></li>
+
+<li><p><code>lte</code> : Same as <code>&lt;=</code></p></li>
+
+<li><p><code>in</code> : Check if the value of given <strong>key</strong> in data is exists in given <strong>val</strong>. <strong>val</strong> should be a <em>Slice</em> of <code>int/float64/string</code>.</p></li>
+
+<li><p><code>notIn</code> : Check if the value of given <strong>key</strong> in data is not exists in given <strong>val</strong>. <strong>val</strong> should be a <em>Slice</em> of <code>int/float64/string</code>.</p></li>
+
+<li><p><code>startsWith</code> : Check if the value of given <strong>key</strong> in data starts with (has a prefix of) the given <strong>val</strong>. This would only work for <em>String</em> type data and exact match.</p></li>
+
+<li><p><code>endsWith</code> : Check if the value of given <strong>key</strong> in data ends with (has a suffix of) the given <strong>val</strong>. This would only work for <em>String</em> type data and exact match.</p></li>
+
+<li><p><code>contains</code> : Check if the value of given <strong>key</strong> in data has a substring of given <strong>val</strong>. This would only work for <em>String</em> type data and loose match.</p></li>
+
+<li><p><code>strictContains</code> : Check if the value of given <strong>key</strong> in data has a substring of given <strong>val</strong>. This would only work for <em>String</em> type data and exact match.</p></li>
+</ul></li>
+</ul>
+
+<p><strong>example:</strong></p>
+
+<p>Let&rsquo;s say you want to find the <em>&lsquo;items&rsquo;</em> who has <em>price</em> greater than <code>1200</code>. You can do it like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">,</span> <span class="s">&#34;&gt;&#34;</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<p>You can add multiple <em>where</em> conditions. It&rsquo;ll give the result by AND-ing between these multiple where conditions.</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">,</span> <span class="s">&#34;&gt;&#34;</span><span class="p">,</span> <span class="mi">500</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">,</span><span class="s">&#34;=&#34;</span><span class="p">,</span> <span class="s">&#34;Fujitsu&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<p>You can also compare <strong>nested</strong> property for <code>Where</code> query like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">Reader</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Body</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;users&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;address.city&#34;</span><span class="p">,</span> <span class="s">&#34;=&#34;</span><span class="p">,</span> <span class="s">&#34;LA&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<h3 id="orwhere-key-op-val"><code>OrWhere(key, op, val)</code></h3>
+
+<p>Parameters of <code>OrWhere()</code> are the same as <code>Where()</code>. The only difference between <code>Where()</code> and <code>OrWhere()</code> is: condition given by the <code>OrWhere()</code> method will OR-ed the result with other conditions.</p>
+
+<p>For example, if you want to find the <em>&lsquo;items&rsquo;</em> with <em>id</em> of <code>1</code> or <code>2</code>, you can do it like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="s">&#34;=&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span><span class="nx">OrWhere</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="s">&#34;=&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<h3 id="wherein-key-val"><code>WhereIn(key, val)</code></h3>
+
+<ul>
+<li><code>key</code> &ndash; the property name of the data</li>
+<li><code>val</code> &ndash; it should be a <strong>Slice</strong> of <code>int/float64/string</code></li>
+</ul>
+
+<p>This method will behave like <code>where(key, &quot;in&quot;, val)</code> method call.</p>
+
+<h3 id="wherenotin-key-val"><code>WhereNotIn(key, val)</code></h3>
+
+<ul>
+<li><code>key</code> &ndash; the property name of the data</li>
+<li><code>val</code> &ndash; it should be a <strong>Slice</strong> of <code>int/float64/string</code></li>
+</ul>
+
+<p>This method will behave like <code>Where(key, &quot;notIn&quot;, val)</code> method call.</p>
+
+<h3 id="wherenil-key"><code>WhereNil(key)</code></h3>
+
+<ul>
+<li><code>key</code> &ndash; the property name of the data</li>
+</ul>
+
+<p>This method will behave like <code>Where(key, &quot;=&quot;, nil)</code> method call.</p>
+
+<h3 id="wherenotnil-key"><code>WhereNotNil(key)</code></h3>
+
+<ul>
+<li><code>key</code> &ndash; the property name of the data</li>
+</ul>
+
+<p>This method will behave like <code>Where(key, &quot;!=&quot;, nil)</code> method call.</p>
+
+<h3 id="whereequal-key-val"><code>WhereEqual(key, val)</code></h3>
+
+<ul>
+<li><code>key</code> &ndash; the property name of the data</li>
+<li><code>val</code> &ndash; it should be a <code>int/float64/string</code></li>
+</ul>
+
+<p>This method will behave like <code>Where(key, &quot;=&quot;, val)</code> method call.</p>
+
+<h3 id="wherenotequal-key-val"><code>WhereNotEqual(key, val)</code></h3>
+
+<ul>
+<li><code>key</code> &ndash; the property name of the data</li>
+<li><code>val</code> &ndash; it should be a <code>int/float64/string</code></li>
+</ul>
+
+<p>This method will behave like <code>Where(key, &quot;!=&quot;, val)</code> method call.</p>
+
+<h3 id="wherestartswith-key-val"><code>WhereStartsWith(key, val)</code></h3>
+
+<ul>
+<li><code>key</code> &ndash; the property name of the data</li>
+<li><code>val</code> &ndash; it should be a String</li>
+</ul>
+
+<p>This method will behave like <code>Where(key, &quot;startsWith&quot;, val)</code> method call.</p>
+
+<h3 id="whereendswith-key-val"><code>WhereEndsWith(key, val)</code></h3>
+
+<ul>
+<li><code>key</code> &ndash; the property name of the data</li>
+<li><code>val</code> &ndash; it should be a String</li>
+</ul>
+
+<p>This method will behave like <code>where(key, &quot;endsWith&quot;, val)</code> method call.</p>
+
+<h3 id="wherecontains-key-val"><code>WhereContains(key, val)</code></h3>
+
+<ul>
+<li><code>key</code> &ndash; the property name of the data</li>
+<li><code>val</code> &ndash; it should be a String</li>
+</ul>
+
+<p>This method will behave like <code>Where(key, &quot;contains&quot;, val)</code> method call.</p>
+
+<h3 id="wherestrictcontains-key-val"><code>WhereStrictContains(key, val)</code></h3>
+
+<ul>
+<li><code>key</code> &ndash; the property name of the data</li>
+<li><code>val</code> &ndash; it should be a String</li>
+</ul>
+
+<p>This method will behave like <code>Where(key, &quot;strictContains&quot;, val)</code> method call.</p>
+
+<h3 id="limit-val"><code>Limit(val)</code></h3>
+
+<ul>
+<li><code>val</code> &ndash; the value should be a <em>integer</em> number greater than Zero</li>
+</ul>
+
+<p><strong>example:</strong></p>
+
+<p>Let&rsquo;s say you want to get <em>2</em> items from the <em>&lsquo;items&rsquo;</em> node. You can do it like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">)</span>
+<span class="nx">res</span> <span class="o">:=</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">).</span><span class="nx">Limit</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">Get</span><span class="p">()</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span></code></pre></div>
+<h3 id="sum-property"><code>Sum(property)</code></h3>
+
+<ul>
+<li><code>property</code> &ndash; the property name of the data.</li>
+</ul>
+
+<p><strong>example:</strong></p>
+
+<p>Let&rsquo;s say you want to find the sum of the <em>&lsquo;price&rsquo;</em> of the <em>&lsquo;items&rsquo;</em>. You can do it like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Sum</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">))</span></code></pre></div>
+<p>If the data you are aggregating is a slice of <code>int/float</code>, you don&rsquo;t need to pass the &lsquo;property&rsquo; parameter.
+See example below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;prices&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Sum</span><span class="p">())</span></code></pre></div>
+<h3 id="count"><code>Count()</code></h3>
+
+<p>It will return the number of elements in the collection/object.</p>
+
+<p><strong>example:</strong></p>
+
+<p>Let&rsquo;s say you want to find how many elements are in the <em>&lsquo;items&rsquo;</em> property. You can do it like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Count</span><span class="p">())</span>
+
+<span class="c1">// or count properties of an object
+</span><span class="c1"></span><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items.[0]&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Count</span><span class="p">())</span></code></pre></div>
+<h3 id="max-property"><code>Max(property)</code></h3>
+
+<ul>
+<li><code>property</code> &ndash; the property name of the data</li>
+</ul>
+
+<p><strong>example:</strong></p>
+
+<p>Let&rsquo;s say you want to find the maximum of the <em>&lsquo;price&rsquo;</em> of the <em>&lsquo;items&rsquo;</em>. You can do it like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Max</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">))</span></code></pre></div>
+<p>If the data you are querying a slice of <code>int/float</code>, you don&rsquo;t need to pass the &lsquo;property&rsquo; parameter.
+See example below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;prices&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Max</span><span class="p">())</span></code></pre></div>
+<h3 id="min-property"><code>Min(property)</code></h3>
+
+<ul>
+<li><code>property</code> &ndash; the property name of the data</li>
+</ul>
+
+<p><strong>example:</strong></p>
+
+<p>Let&rsquo;s say you want to find the minimum of the <em>&lsquo;price&rsquo;</em> of the <em>&lsquo;items&rsquo;</em>. You can do it like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Min</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">))</span></code></pre></div>
+<p>If the data you are querying a slice of <code>int/float</code>, you don&rsquo;t need to pass the &lsquo;property&rsquo; parameter.
+See detail example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;prices&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Min</span><span class="p">())</span></code></pre></div>
+<h3 id="avg-property"><code>Avg(property)</code></h3>
+
+<ul>
+<li><code>property</code> &ndash; the property name of the data</li>
+</ul>
+
+<p><strong>example:</strong></p>
+
+<p>Let&rsquo;s say you want to find the average of the <em>&lsquo;price&rsquo;</em> of the <em>&lsquo;items&rsquo;</em>. You can do it like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Avg</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">))</span></code></pre></div>
+<p>If the data you are querying a slice of <code>int/float</code>, you don&rsquo;t need to pass the &lsquo;property&rsquo; parameter.
+See detail example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;prices&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Avg</span><span class="p">())</span></code></pre></div>
+<h3 id="first"><code>First()</code></h3>
+
+<p>It will return the first element of the collection.</p>
+
+<p><strong>example:</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">First</span><span class="p">())</span></code></pre></div>
+<h3 id="last"><code>Last()</code></h3>
+
+<p>It will return the last element of the collection.</p>
+
+<p><strong>example:</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;prices&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Last</span><span class="p">())</span></code></pre></div>
+<h3 id="nth-index"><code>Nth(index)</code></h3>
+
+<ul>
+<li><code>index</code> &ndash; index of the element to be returned.</li>
+</ul>
+
+<p>It will return the nth element of the collection. If the given index is a <strong>positive</strong> value, it will return the nth element from the beginning. If the given index is a <strong>negative</strong> value, it will return the nth element from the end.</p>
+
+<p><strong>example:</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Nth</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span></code></pre></div>
+<h3 id="groupby-property"><code>GroupBy(property)</code></h3>
+
+<ul>
+<li><code>property</code> &ndash; The property by which you want to group the collection.</li>
+</ul>
+
+<p><strong>example:</strong></p>
+
+<p>Let&rsquo;s say you want to group the <em>&lsquo;items&rsquo;</em> data based on the <em>&lsquo;price&rsquo;</em> property. You can do it like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">GroupBy</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">).</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<p>You can also group data using <strong>nested</strong> property:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">Reader</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Body</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;users&#34;</span><span class="p">).</span><span class="nx">GroupBy</span><span class="p">(</span><span class="s">&#34;address.city&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<h3 id="sort-order"><code>Sort(order)</code></h3>
+
+<ul>
+<li><code>order</code> &ndash; If you skip the <em>&lsquo;order&rsquo;</em> property the data will be by default ordered as <strong>ascending</strong>. You need to pass <strong>&lsquo;desc&rsquo;</strong> as the <em>&lsquo;order&rsquo;</em> parameter to sort the data in <strong>descending</strong> order.</li>
+</ul>
+
+<p><strong>Note:</strong> This method should be used for <code>Slice</code>. If you want to sort an Array of Objects you should use the <strong>SortBy()</strong> method described later.</p>
+
+<p><strong>example:</strong></p>
+
+<p>Let&rsquo;s say you want to sort the <em>&lsquo;prices/names&rsquo;</em> data. You can do it like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;prices&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Sort</span><span class="p">().</span><span class="nx">Get</span><span class="p">())</span>
+
+<span class="c1">// or sort array of strings in descending order
+</span><span class="c1"></span><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;names&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Sort</span><span class="p">(</span><span class="s">&#34;desc&#34;</span><span class="p">).</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<h3 id="sortby-property-order"><code>SortBy(property, order)</code></h3>
+
+<ul>
+<li><code>property</code> &ndash; You need to pass the property name on which the sorting will be done.</li>
+<li><code>order</code> &ndash; If you skip the <em>&lsquo;order&rsquo;</em> property the data will be by default ordered as <strong>ascending</strong>. You need to pass <strong>&lsquo;desc&rsquo;</strong> as the <em>&lsquo;order&rsquo;</em> parameter to sort the data in <strong>descending</strong> order.</li>
+</ul>
+
+<p><strong>Note:</strong> This method should be used for Array of Objects. If you want to sort a plain Array you should use the <strong>Sort()</strong> method described earlier.</p>
+
+<p><strong>example:</strong></p>
+
+<p>Let&rsquo;s say you want to sort the <em>&lsquo;price&rsquo;</em> data of <em>&lsquo;items&rsquo;</em>. You can do it like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">SortBy</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">).</span><span class="nx">Get</span><span class="p">())</span>
+
+<span class="c1">// or in descending order
+</span><span class="c1"></span><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">SortBy</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">,</span> <span class="s">&#34;desc&#34;</span><span class="p">).</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<p>You can also sort data using <strong>nested</strong> property:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">Reader</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Body</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;users&#34;</span><span class="p">).</span><span class="nx">SortBy</span><span class="p">(</span><span class="s">&#34;address.city&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<h3 id="reset"><code>Reset()</code></h3>
+
+<p>Reset the queries with the original data so that you can query again.
+See the example below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">)</span>
+
+<span class="nx">res1</span> <span class="o">:=</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">,</span> <span class="s">&#34;&gt;&#34;</span><span class="p">,</span> <span class="mi">900</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">).</span><span class="nx">Sum</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">)</span>
+
+<span class="c1">// got our first result, now reset the instance and query again
+</span><span class="c1"></span><span class="nx">res2</span> <span class="o">:=</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Reset</span><span class="p">().</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;prices&#34;</span><span class="p">).</span><span class="nx">Max</span><span class="p">()</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;Res1: %#v\nRes2: %#v\n&#34;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">,</span> <span class="nx">res2</span><span class="p">)</span></code></pre></div>
+<h3 id="only-properties"><code>Only(properties)</code></h3>
+
+<ul>
+<li><code>properties</code> &ndash; The properties which you want to get in final results. To get a clear idea see the example below:</li>
+</ul>
+
+<p><strong>Example</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">).</span><span class="nx">WhereNotNil</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Only</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="s">&#34;price&#34;</span><span class="p">))</span></code></pre></div>
+<p><strong>Output</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="p">[]</span><span class="kd">interface</span> <span class="p">{}{</span>
+    <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span> <span class="p">{}{</span><span class="s">&#34;id&#34;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;price&#34;</span><span class="p">:</span><span class="mi">1350</span><span class="p">},</span>
+    <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span> <span class="p">{}{</span><span class="s">&#34;id&#34;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#34;price&#34;</span><span class="p">:</span><span class="mi">1700</span><span class="p">},</span>
+    <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span> <span class="p">{}{</span><span class="s">&#34;id&#34;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s">&#34;price&#34;</span><span class="p">:</span><span class="mi">1200</span><span class="p">},</span>
+    <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span> <span class="p">{}{</span><span class="s">&#34;id&#34;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s">&#34;price&#34;</span><span class="p">:</span><span class="mi">850</span><span class="p">},</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="pluck-property"><code>Pluck(property)</code></h3>
+
+<ul>
+<li><code>property</code> &ndash; The property by which you want to get an array.</li>
+</ul>
+
+<p>Only returns a plain array of values for the property, you can&rsquo;t chain further method to <code>Pluck</code>. To get a clear idea see the example below:</p>
+
+<p><strong>Example</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Pluck</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">))</span></code></pre></div>
+<p><strong>Output</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="p">[]</span><span class="kd">interface</span> <span class="p">{}{</span><span class="mi">1350</span><span class="p">,</span> <span class="mi">1700</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">850</span><span class="p">,</span> <span class="mi">850</span><span class="p">}</span></code></pre></div>
+<h3 id="macro-operator-queryfunc"><code>Macro(operator, QueryFunc)</code></h3>
+
+<p>Query matcher can be written as macro and used multiple time for further queries. Lets&rsquo; say we don&rsquo;t have weak match for <code>WhereStartsWith</code>, we can write one. See the example below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">).</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">)</span>
+<span class="nx">jq</span><span class="p">.</span><span class="nx">Macro</span><span class="p">(</span><span class="s">&#34;WM&#34;</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">(</span><span class="kt">bool</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// WM is our weak match operator
+</span><span class="c1"></span>    <span class="nx">xs</span><span class="p">,</span> <span class="nx">okx</span> <span class="o">:=</span> <span class="nx">x</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="nx">ys</span><span class="p">,</span> <span class="nx">oky</span> <span class="o">:=</span> <span class="nx">y</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">!</span><span class="nx">okx</span> <span class="o">||</span> <span class="p">!</span><span class="nx">oky</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&#34;weak match only support string&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">(</span><span class="nx">xs</span><span class="p">),</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">(</span><span class="nx">ys</span><span class="p">)),</span> <span class="kc">nil</span>
+<span class="p">})</span>
+<span class="nx">jq</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">,</span> <span class="s">&#34;WM&#34;</span><span class="p">,</span> <span class="s">&#34;mac&#34;</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;%#v\n&#34;</span><span class="p">,</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">())</span></code></pre></div>
+<h3 id="copy"><code>Copy()</code></h3>
+
+<p>It will return a complete clone of the Object instance. Note <code>Copy</code> method is very useful when working concurrently. You can copy the instance for multiple <code>goroutine</code></p>
+
+<p><strong>Example</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./data.json&#34;</span><span class="p">)</span>
+<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+    <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">j</span> <span class="o">*</span><span class="nx">gojsonq</span><span class="p">.</span><span class="nx">JSONQ</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;Sum: %#v\n&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">.</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;items&#34;</span><span class="p">).</span><span class="nx">Sum</span><span class="p">(</span><span class="s">&#34;price&#34;</span><span class="p">))</span>
+    <span class="p">}(</span><span class="nx">jq</span><span class="p">.</span><span class="nx">Copy</span><span class="p">())</span>
+
+    <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">j</span> <span class="o">*</span><span class="nx">gojsonq</span><span class="p">.</span><span class="nx">JSONQ</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;Min: %#v\n&#34;</span><span class="p">,</span> <span class="nx">j</span><span class="p">.</span><span class="nx">From</span><span class="p">(</span><span class="s">&#34;prices&#34;</span><span class="p">).</span><span class="nx">Min</span><span class="p">())</span>
+    <span class="p">}(</span><span class="nx">jq</span><span class="p">.</span><span class="nx">Copy</span><span class="p">())</span>
+<span class="p">}</span>
+<span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span></code></pre></div>
+<h3 id="errors"><code>Errors()</code></h3>
+
+<p>Return a list of errors occurred when processing the queries, it may help to debug or understand what is happening.</p>
+
+<h3 id="error"><code>Error()</code></h3>
+
+<p>Return the first occurred error, you can check any error occurred when processing the queries.</p>
+
+<p><strong>Example</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">jq</span> <span class="o">:=</span> <span class="nx">gojsonq</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">File</span><span class="p">(</span><span class="s">&#34;./invalid-file.xson&#34;</span><span class="p">)</span>
+<span class="nx">res</span> <span class="o">:=</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Get</span><span class="p">()</span>
+<span class="nx">err</span> <span class="o">:=</span> <span class="nx">jq</span><span class="p">.</span><span class="nx">Error</span><span class="p">()</span> <span class="c1">// if err != nil do something, may show the error list using jq.Errors() method
+</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&#34;Error: %v\nResult: %#v\n&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span></code></pre></div></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://thedevsaddam.github.io/tags/go"><span class="tag">Go</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/golang"><span class="tag">Golang</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/gojsonq"><span class="tag">Gojsonq</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/jsonq"><span class="tag">Jsonq</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/json-query"><span class="tag">Json Query</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/query-json-data-in-golang"><span class="tag">Query Json Data in Golang</span></a></li>
+        
+          <li><a href="https://thedevsaddam.github.io/tags/deeply-nested-json-access-in-go"><span class="tag">Deeply Nested Json Access in Go</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        Copyright © 2017 by Saddam H
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thedevsaddam" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 Coffee time</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://thedevsaddam.github.io/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-109646237-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>

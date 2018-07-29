@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2017 by Saddam H</copyright>
-    <lastBuildDate>Tue, 29 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://thedevsaddam.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GoJSONQ</title>
+      <link>https://thedevsaddam.github.io/post/gojsonq/</link>
+      <pubDate>Sun, 29 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thedevsaddam.github.io/post/gojsonq/</guid>
+      <description>API for different queries Sample data (data.json)  { &amp;ldquo;name&amp;rdquo;:&amp;ldquo;computers&amp;rdquo;, &amp;ldquo;description&amp;rdquo;:&amp;ldquo;List of computer products&amp;rdquo;, &amp;ldquo;prices&amp;rdquo;:[2400, 2100, 1200, 400.87, 89.90, 150.10], &amp;ldquo;names&amp;rdquo;:[&amp;ldquo;John Doe&amp;rdquo;, &amp;ldquo;Jane Doe&amp;rdquo;, &amp;ldquo;Tom&amp;rdquo;, &amp;ldquo;Jerry&amp;rdquo;, &amp;ldquo;Nicolas&amp;rdquo;, &amp;ldquo;Abby&amp;rdquo;], &amp;ldquo;items&amp;rdquo;:[ { &amp;ldquo;id&amp;rdquo;:1, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;MacBook Pro 13 inch retina&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:1350 }, { &amp;ldquo;id&amp;rdquo;:2, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;MacBook Pro 15 inch retina&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:1700 }, { &amp;ldquo;id&amp;rdquo;:3, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;Sony VAIO&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:1200 }, { &amp;ldquo;id&amp;rdquo;:4, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;Fujitsu&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:850 }, { &amp;ldquo;id&amp;rdquo;:null, &amp;ldquo;name&amp;rdquo;:&amp;ldquo;HP core i3 SSD&amp;rdquo;, &amp;ldquo;price&amp;rdquo;:850 } ] }</description>
+    </item>
     
     <item>
       <title>Query JSON data using Golang (gojsonq package)</title>
