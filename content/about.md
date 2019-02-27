@@ -5,7 +5,7 @@ layout: "about"
 menu: "main"
 weight: 40
 ---
-> ***Software engineer at Pathao Inc, love to spend time by learning new technology/architecture/design***
+> ***Senior Software engineer at Pathao Inc, love to spend time by learning new technology/architecture/design***
 
 Love to drink coffee, watch movies. In free time go to Cineplex and watch movies.. Recently in holidays I used to watch movies/tv series all the night at home. Trying to enjoy the life as it is.
 
